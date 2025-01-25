@@ -1,5 +1,6 @@
 import 'package:asmaak/core/utils/widgets/custom_button.dart';
 import 'package:asmaak/core/utils/widgets/custom_text_form_field.dart';
+import 'package:asmaak/features/auth/presentation/view/register_view.dart';
 import 'package:asmaak/features/auth/presentation/view/widgets/custom_password_field.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -158,7 +159,9 @@ class LoginView extends StatelessWidget {
                                 .copyWith(color: AppColor.lightGrayColor),
                           ),
                           TextSpan(
-                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            recognizer: TapGestureRecognizer()..onTap = () {
+                              Navigator.pushReplacementNamed(context, RegisterView.routeName);
+                            },
                             text: 'إنشاء حساب',
                             style: Styles.bold16
                                 .copyWith(color: AppColor.primaryColor),

@@ -9,6 +9,7 @@ import '../../../../core/helper_functions/auth_linear_gradient.dart';
 import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
+import 'login_view.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -157,7 +158,9 @@ class RegisterView extends StatelessWidget {
                                 .copyWith(color: AppColor.lightGrayColor),
                           ),
                           TextSpan(
-                            recognizer: TapGestureRecognizer()..onTap = () {},
+                            recognizer: TapGestureRecognizer()..onTap = () {
+                              Navigator.pushReplacementNamed(context, LoginView.routeName);
+                            },
                             text: 'تسجيل الدخول',
                             style: Styles.bold16
                                 .copyWith(color: AppColor.primaryColor),
