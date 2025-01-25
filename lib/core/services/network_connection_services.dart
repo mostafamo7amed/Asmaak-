@@ -20,14 +20,18 @@ class NetworkConnectionController extends GetxController {
   void _updateConnectionStatus(ConnectivityResult result) {
     if (result == ConnectivityResult.none) {
       Get.rawSnackbar(
-        backgroundColor: AppColor.redColor,
+        padding: EdgeInsets.all(10),
+        backgroundColor: AppColor.primaryColor,
         isDismissible: false,
         messageText: Text(
-          "No internet connection",
+          "تعذر الاتصال بالانترنت",
           style: Styles.regular16.copyWith(color: AppColor.whiteColor),),
-        icon: Icon(
-          Icons.wifi_off,
-          color: AppColor.whiteColor,
+        icon: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Icon(
+            Icons.wifi_off,
+            color: AppColor.whiteColor,
+          ),
         ),
         duration: const Duration(days: 1),
         animationDuration: const Duration(milliseconds: 300),
@@ -36,10 +40,11 @@ class NetworkConnectionController extends GetxController {
       );
     } else {
       Get.rawSnackbar(
-        backgroundColor: AppColor.primaryColor,
+        padding: EdgeInsets.all(10),
+        backgroundColor: AppColor.greenColor,
         isDismissible: false,
         messageText: Text(
-          "You are back online",
+          "تم الاتصال بالانترنت",
           style: Styles.regular16.copyWith(color: AppColor.whiteColor),),
         icon: Icon(
           Icons.wifi,

@@ -73,7 +73,7 @@ abstract class Styles {
   );
 
   static TextStyle tabsSelectedTextStyle = TextStyle(
-      fontSize: 13, fontWeight: FontWeight.normal, color: AppColor.orangeColor
+      fontSize: 13, fontWeight: FontWeight.normal, color: AppColor.orangeTextColor
 
   );
   static TextStyle tabsUnSelectedTextStyle = TextStyle(
