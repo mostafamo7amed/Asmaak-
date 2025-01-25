@@ -4,34 +4,35 @@ import '../app_manager/app_styles.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton(
-      {super.key, this.text, required this.onPressed, this.isLoading = false,this.width, this.height, this.color});
+      {super.key, this.text, required this.onPressed, this.isLoading = false,this.width, this.height, this.color, this.textColor});
   final String? text;
   final void Function()? onPressed;
   final bool isLoading;
   final double? width;
   final double? height;
   final Color? color;
+  final Color? textColor;
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: SizedBox(
         height: height ?? 50,
-        width: width ?? MediaQuery.of(context).size.width * .93,
+        width: width ?? MediaQuery.of(context).size.width,
         child: TextButton(
           onPressed: onPressed,
           style: TextButton.styleFrom(
               backgroundColor: color ?? AppColor.primaryColor,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16))),
+                  borderRadius: BorderRadius.circular(12))),
           child: !isLoading
               ? Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
                       text ?? '',
-                      style: Styles.bold16.copyWith(color: AppColor.whiteColor),
+                      style: Styles.bold16.copyWith(color: textColor??AppColor.whiteColor),
                     ),
                   ],
                 )
