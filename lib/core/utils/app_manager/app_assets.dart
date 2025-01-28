@@ -13,5 +13,15 @@ class AssetsData {
   static const String google = "$baseSvg/google.svg";
   static const String apple = "$baseSvg/apple.svg";
 
+  static const String settings = "$baseSvg/settings.svg";
+  static const String profile = "$baseSvg/profile.svg";
+  static const String lesson = "$baseSvg/lesson.svg";
+  static const String quiz = "$baseSvg/quiz.svg";
+
+  static const String coins = "$basePng/coins.png";
+  static const String diamond = "$basePng/diamond.png";
+
+  //for display image
+  static const String cate = "$baseSvg/cat.svg";
 
 }

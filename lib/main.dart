@@ -39,6 +39,7 @@ class Asmaak extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       title: 'أَسْمَعُك',
       theme: ThemeData(
+        scaffoldBackgroundColor: AppColor.backgroundColor,
         fontFamily: 'Cairo',
           colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
         useMaterial3: true,

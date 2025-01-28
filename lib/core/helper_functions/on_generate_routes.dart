@@ -1,3 +1,4 @@
+import 'package:asmaak/features/home/presentation/views/user_home_root.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/view/forget_password.dart';
@@ -18,6 +19,8 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const RegisterView());
     case ForgetPassword.routeName:
       return MaterialPageRoute(builder: (_) => const ForgetPassword());
+    case UserHomeRoot.routeName:
+      return MaterialPageRoute(builder: (_) => const UserHomeRoot());
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }
