@@ -1,4 +1,4 @@
-package com.example.assmak
+package com.example.asmaak
 
 import io.flutter.embedding.android.FlutterActivity
 
