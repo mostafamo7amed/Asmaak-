@@ -16,5 +16,6 @@ class AppColor {
   static Color checkBoxColor = const Color(0xffdddfdf);
   static Color backgroundColor = const Color(0xfffdfbfd);
   static Color opacityColor = const Color(0xfffae7cc);
+  static Color redColor = const Color(0xffFF0000);
 
 }

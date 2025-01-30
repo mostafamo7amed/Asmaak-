@@ -5,12 +5,13 @@ import '../../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../../core/utils/app_manager/app_styles.dart';
 
-AppBar buildHomeAppBar(context) {
+AppBar buildHomeAppBar(context, {String title = ''}) {
   return AppBar(
     toolbarHeight: 70,
     shadowColor: AppColor.lightGrayColor,
     surfaceTintColor: Colors.transparent,
     backgroundColor: Colors.white,
+
     leading: Padding(
       padding: const EdgeInsets.only(right: 8.0),
       child: CircleAvatar(
@@ -28,11 +29,19 @@ AppBar buildHomeAppBar(context) {
     titleSpacing: 0,
     title: Column(
       children: [
+        if (title != '')
+        Text(
+          title,
+          textAlign: TextAlign.center,
+          style: Styles.bold19.copyWith(color: AppColor.primaryColor),
+        ),
+        if (title == '')
         Text(
           'أَسْمَعُك',
           textAlign: TextAlign.center,
           style: Styles.bold19.copyWith(color: AppColor.primaryColor),
         ),
+        if (title == '')
         Text(
           'لغه الاشاره العربيه',
           textAlign: TextAlign.center,

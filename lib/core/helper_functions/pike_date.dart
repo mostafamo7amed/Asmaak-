@@ -14,7 +14,7 @@ Future<DateTime?> pickDate(BuildContext context) async {
           data: ThemeData.light().copyWith(
             colorScheme: ColorScheme.light(
               brightness: Brightness.light,
-              primary: AppColor.blackColor,
+              primary: AppColor.primaryColor,
               onPrimary: AppColor.whiteColor,
             ),
             dialogBackgroundColor:
