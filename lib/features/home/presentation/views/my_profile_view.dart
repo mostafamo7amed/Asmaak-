@@ -6,7 +6,6 @@ import 'package:asmaak/features/home/presentation/views/widgets/custom_app_bar.d
 import 'package:asmaak/features/home/presentation/views/widgets/edit_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 import '../../../../core/helper_functions/auth_linear_gradient.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';

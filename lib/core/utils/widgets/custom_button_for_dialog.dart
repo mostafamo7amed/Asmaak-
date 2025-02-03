@@ -22,14 +22,14 @@ class CustomTextButtonForDialog extends StatelessWidget {
         style: TextButton.styleFrom(
             backgroundColor: buttonBackgroundColor,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(8), // <-- Radius
+              borderRadius: BorderRadius.circular(12), // <-- Radius
             )),
         child: SizedBox(
           width: MediaQuery.of(context).size.width / 4,
           child: Text(mainTitle,
               textAlign: TextAlign.center,
-              style: Styles.regular16.copyWith(
-                  fontWeight: FontWeight.w600, color: textColor)),
+              style: Styles.bold16.copyWith(
+                  color: textColor)),
         ));
   }
 }

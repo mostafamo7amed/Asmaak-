@@ -1,17 +1,17 @@
 import 'package:asmaak/core/utils/widgets/custom_button.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:video_player/video_player.dart';
-import '../../../../../core/utils/app_manager/app_colors.dart';
-import '../../../../../core/utils/app_manager/app_styles.dart';
+import '../app_manager/app_colors.dart';
+import '../app_manager/app_styles.dart';
 
-Future customDialog({
+Future customViewLessonDialog({
   context,
   message,
   image,
   onConfirm,
+  isManage = true,
 }) =>
     showDialog(
       barrierDismissible: false,
@@ -79,15 +79,20 @@ Future customDialog({
                 const SizedBox(
                   height: 20,
                 ),
-                CustomButton(
-                  height: 40,
-                  width: MediaQuery.of(context).size.width / 3,
-                  text: 'تعلمت',
-                  textColor: AppColor.whiteColor,
-                  onPressed: onConfirm,
-                ),
-                const SizedBox(
-                  height: 20,
+                if(isManage)
+                Column(
+                  children: [
+                    CustomButton(
+                      height: 40,
+                      width: MediaQuery.of(context).size.width / 3,
+                      text: 'تعلمت',
+                      textColor: AppColor.whiteColor,
+                      onPressed: onConfirm,
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
                 ),
               ],
             ),

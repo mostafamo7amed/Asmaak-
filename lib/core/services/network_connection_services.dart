@@ -20,8 +20,9 @@ class NetworkConnectionController extends GetxController {
   void _updateConnectionStatus(ConnectivityResult result) {
     if (result == ConnectivityResult.none) {
       Get.rawSnackbar(
+        snackPosition: SnackPosition.TOP,
         padding: EdgeInsets.all(10),
-        backgroundColor: AppColor.primaryColor,
+        backgroundColor: AppColor.pinkColor,
         isDismissible: false,
         messageText: Text(
           "تعذر الاتصال بالانترنت",
@@ -40,6 +41,7 @@ class NetworkConnectionController extends GetxController {
       );
     } else {
       Get.rawSnackbar(
+        snackPosition: SnackPosition.TOP,
         padding: EdgeInsets.all(10),
         backgroundColor: AppColor.greenColor,
         isDismissible: false,

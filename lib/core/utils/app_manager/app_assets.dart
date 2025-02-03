@@ -39,6 +39,9 @@ class AssetsData {
 
   static const String coins = "$basePng/coins.png";
   static const String diamond = "$basePng/diamond.png";
+  static const String teacher = "$baseSvg/teacher.svg";
+  static const String users = "$baseSvg/users.svg";
+  static const String setting = "$baseSvg/setting.svg";
 
   //for display image
   static const String cate = "$baseSvg/cat.svg";

@@ -111,6 +111,7 @@ class RegisterView extends StatelessWidget {
                     height: 5,
                   ),
                   CustomPasswordFormField(
+                    showValidation: true,
                     onSaved: (value) {},
                     validator: (value) {
                       if (value!.isEmpty) {

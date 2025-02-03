@@ -2,7 +2,6 @@ import 'package:asmaak/features/home/domain/entity/lesson_entity.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/custom_basics_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
