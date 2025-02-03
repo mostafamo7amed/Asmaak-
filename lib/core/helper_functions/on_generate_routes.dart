@@ -1,8 +1,14 @@
+import 'package:asmaak/features/admin/presentation/views/manage_category_view.dart';
+import 'package:asmaak/features/admin/presentation/views/manage_lesson_view.dart';
+import 'package:asmaak/features/admin/presentation/views/manage_quiz_view.dart';
+import 'package:asmaak/features/admin/presentation/views/widgets/add_quiz_view.dart';
+import 'package:asmaak/features/admin/presentation/views/widgets/view_user_details_view.dart';
 import 'package:asmaak/features/home/presentation/views/notification_view.dart';
 import 'package:asmaak/features/home/presentation/views/privacy_view.dart';
 import 'package:asmaak/features/home/presentation/views/user_home_root.dart';
 import 'package:flutter/material.dart';
 
+import '../../features/admin/presentation/views/admin_home_view.dart';
 import '../../features/auth/presentation/view/forget_password.dart';
 import '../../features/auth/presentation/view/login_view.dart';
 import '../../features/auth/presentation/view/register_view.dart';
@@ -36,6 +42,19 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const NotificationView());
     case QuizView.routeName:
       return MaterialPageRoute(builder: (_) => const QuizView());
+    // Admin Routes
+    case AdminHomeView.routeName:
+      return MaterialPageRoute(builder: (_) => const AdminHomeView());
+    case ManageCategoryView.routeName:
+      return MaterialPageRoute(builder: (_) => const ManageCategoryView());
+    case ManageLessonView.routeName:
+      return MaterialPageRoute(builder: (_) => const ManageLessonView());
+    case ManageQuizView.routeName:
+      return MaterialPageRoute(builder: (_) => const ManageQuizView());
+    case AddQuizView.routeName:
+      return MaterialPageRoute(builder: (_) => const AddQuizView());
+    case ViewUserDetailsView.routeName:
+      return MaterialPageRoute(builder: (_) => const ViewUserDetailsView());
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }

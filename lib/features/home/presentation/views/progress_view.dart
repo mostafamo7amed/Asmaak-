@@ -4,8 +4,6 @@ import 'package:asmaak/features/home/presentation/views/widgets/custom_app_bar.d
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:linear_progress_bar/linear_progress_bar.dart';
-
 import '../../../../core/helper_functions/auth_linear_gradient.dart';
 import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';

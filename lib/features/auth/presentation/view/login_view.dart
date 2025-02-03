@@ -1,8 +1,8 @@
 import 'package:asmaak/core/utils/widgets/custom_button.dart';
 import 'package:asmaak/core/utils/widgets/custom_text_form_field.dart';
+import 'package:asmaak/features/admin/presentation/views/admin_home_view.dart';
 import 'package:asmaak/features/auth/presentation/view/register_view.dart';
 import 'package:asmaak/features/auth/presentation/view/widgets/custom_password_field.dart';
-import 'package:asmaak/features/home/presentation/views/user_home_root.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -145,7 +145,8 @@ class LoginView extends StatelessWidget {
                   ),
                   CustomButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, UserHomeRoot.routeName);
+                      //Navigator.pushNamed(context, UserHomeRoot.routeName);
+                      Navigator.pushReplacementNamed(context, AdminHomeView.routeName);
                     },
                     text: 'تسجيل الدخول',
                   ),

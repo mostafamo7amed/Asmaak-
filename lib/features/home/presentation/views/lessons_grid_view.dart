@@ -1,10 +1,8 @@
 import 'package:asmaak/core/utils/app_manager/app_assets.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/custom_app_bar.dart';
-import 'package:asmaak/features/home/presentation/views/widgets/custom_dialog.dart';
+import 'package:asmaak/core/utils/widgets/custom_view_lesson_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../../../core/helper_functions/get_random_color.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
 
@@ -26,7 +24,7 @@ class LessonsGridView extends StatelessWidget {
               crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              customDialog(
+              customViewLessonDialog(
                 image: AssetsData.cate,
                   context: context, message: 'قطة', onConfirm: () {});
             },
