@@ -19,7 +19,7 @@ class LessonsGridView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: GridView.builder(
           physics: BouncingScrollPhysics(),
-          itemCount: 30,
+          itemCount: 2,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
           itemBuilder: (context, index) => GestureDetector(

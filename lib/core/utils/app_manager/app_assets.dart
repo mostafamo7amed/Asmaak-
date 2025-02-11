@@ -16,6 +16,11 @@ class AssetsData {
   static const String progress2 = "$baseSvg/progress_2.svg";
   static const String google = "$baseSvg/google.svg";
   static const String apple = "$baseSvg/apple.svg";
+  static const String foods = "$baseSvg/foods.svg";
+  static const String close = "$baseSvg/close.svg";
+  static const String correctAnswer = "$baseSvg/correct_answer.svg";
+  static const String wrongAnswer = "$baseSvg/wrong_answer.svg";
+  static const String result = "$baseSvg/result.svg";
 
   static const String settings = "$baseSvg/settings.svg";
   static const String profile = "$baseSvg/profile.svg";

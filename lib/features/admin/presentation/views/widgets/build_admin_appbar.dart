@@ -12,13 +12,13 @@ AppBar buildAdminAppBar(context, {String title = '', bool showBack = false}) {
     surfaceTintColor: Colors.transparent,
     backgroundColor: Colors.white,
     leading: Padding(
-      padding: const EdgeInsets.only(right: 8.0),
+      padding: const EdgeInsets.only(right: 15.0),
       child: CircleAvatar(
-        radius: 25,
+        radius: 20,
         child: SvgPicture.asset(
           AssetsData.profile,
-          height: 25,
-          width: 25,
+          height: 20,
+          width: 20,
           fit: BoxFit.scaleDown,
           colorFilter: ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
         ),

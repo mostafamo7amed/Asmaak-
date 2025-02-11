@@ -1,5 +1,7 @@
 import 'package:asmaak/core/utils/app_manager/app_assets.dart';
 import 'package:asmaak/core/utils/app_manager/app_colors.dart';
+import 'package:asmaak/features/auth/presentation/view/login_view.dart';
+import 'package:asmaak/features/home/presentation/views/my_points_view.dart';
 import 'package:asmaak/features/home/presentation/views/notification_view.dart';
 import 'package:asmaak/features/home/presentation/views/privacy_view.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/custom_app_bar.dart';
@@ -69,7 +71,7 @@ class MyProfileView extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: 30,),
+                SizedBox(height: 20,),
                 Container(
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
@@ -78,7 +80,7 @@ class MyProfileView extends StatelessWidget {
                   ),
                   child: Text('اسم المستخدم',style: Styles.bold16.copyWith(color: AppColor.primaryColor),),
                 ),
-                SizedBox(height: 50,),
+                SizedBox(height: 30,),
                 GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, EditProfileView.routeName);
@@ -128,6 +130,62 @@ class MyProfileView extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height: 10,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, MyPointsView.routeName);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Card(
+                      color: AppColor.whiteColor,
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(
+                            AssetsData.teacher,
+                              height: 30,
+                              width: 25,
+                              colorFilter: ColorFilter.mode(AppColor.primaryColor, BlendMode.srcIn),
+                            ),
+                            SizedBox(width: 10,),
+                            Text('نقاطي',style: Styles.bold19.copyWith(color: AppColor.primaryColor),),
+                            const Spacer(),
+                            SvgPicture.asset(AssetsData.warm,width: 25,height: 25,),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 5,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, LoginView.routeName);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Card(
+                      color: AppColor.whiteColor,
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Row(
+                          children: [
+                           Icon(Icons.logout,color: AppColor.primaryColor,size: 25,),
+                            SizedBox(width: 10,),
+                            Text('خروج',style: Styles.bold19.copyWith(color: AppColor.primaryColor),),
+                            const Spacer(),
+                            SvgPicture.asset(AssetsData.snail,width: 30,height: 30,),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+
               ],
             ),
           ),

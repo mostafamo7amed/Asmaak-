@@ -20,52 +20,55 @@ class ManageView extends StatelessWidget {
       appBar: buildAdminAppBar(context,title: 'أسمعك'),
       body: Container(
         width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         decoration: BoxDecoration(
           gradient: buildAuthLinearGradient(),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('مرحبا بك, مدير النظام',style: Styles.bold19.copyWith(color: AppColor.primaryColor),),
-              const SizedBox(height: 5,),
-              Text("يمكنك أدارة المحتوي والاختبارات هنا",style: Styles.regular16.copyWith(color: AppColor.lightGrayColor),),
-              const Spacer(),
-              Align(
-                  alignment: Alignment.topRight,
-                  child: SvgPicture.asset(AssetsData.fly,)
-              ),
-              SizedBox(height: 30,),
-              AdminPanelItem(
-                title: 'إدارة المحتوي',
-                icon: AssetsData.settings,
-                onTap: () {
-                  Navigator.pushNamed(context, ManageCategoryView.routeName);
-                },
-              ),
-              SizedBox(height: 10,),
-              AdminPanelItem(
-                title: 'إدارة الدروس',
-                icon: AssetsData.lesson,
-                onTap: () {
-                  Navigator.pushNamed(context, ManageLessonView.routeName);
-
-                },
-              ),
-              SizedBox(height: 10,),
-              AdminPanelItem(
-                title: 'إدارة الاختبارات',
-                icon: AssetsData.teacher,
-                onTap: () {
-                  Navigator.pushNamed(context, ManageQuizView.routeName);
-                },
-              ),
-              Spacer(flex: 2,),
-              Align(
-                alignment: Alignment.bottomLeft,
-                  child: SvgPicture.asset(AssetsData.logo,height: 120,)),
-            ],
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('مرحبا بك, مدير النظام',style: Styles.bold19.copyWith(color: AppColor.primaryColor),),
+                const SizedBox(height: 5,),
+                Text("يمكنك أدارة المحتوي والاختبارات هنا",style: Styles.regular16.copyWith(color: AppColor.lightGrayColor),),
+                SizedBox(height: 30,),
+                Align(
+                    alignment: Alignment.topRight,
+                    child: SvgPicture.asset(AssetsData.fly,)
+                ),
+                SizedBox(height: 30,),
+                AdminPanelItem(
+                  title: 'إدارة المحتوي',
+                  icon: AssetsData.settings,
+                  onTap: () {
+                    Navigator.pushNamed(context, ManageCategoryView.routeName);
+                  },
+                ),
+                SizedBox(height: 10,),
+                AdminPanelItem(
+                  title: 'إدارة الدروس',
+                  icon: AssetsData.lesson,
+                  onTap: () {
+                    Navigator.pushNamed(context, ManageLessonView.routeName);
+          
+                  },
+                ),
+                SizedBox(height: 10,),
+                AdminPanelItem(
+                  title: 'إدارة الاختبارات',
+                  icon: AssetsData.teacher,
+                  onTap: () {
+                    Navigator.pushNamed(context, ManageQuizView.routeName);
+                  },
+                ),
+                SizedBox(height: 40,),
+                Align(
+                  alignment: Alignment.bottomLeft,
+                    child: SvgPicture.asset(AssetsData.logo,height: 120,)),
+              ],
+            ),
           ),
         ),
       ),

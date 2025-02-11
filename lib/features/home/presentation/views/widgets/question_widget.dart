@@ -1,4 +1,5 @@
-
+import 'package:asmaak/core/utils/app_manager/app_assets.dart';
+import 'package:asmaak/features/home/presentation/views/widgets/custom_answer_dialog.dart';
 import 'package:flick_video_player/flick_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
@@ -10,7 +11,20 @@ import 'custom_choose_widget.dart';
 class QuestionWidget extends StatefulWidget {
   const QuestionWidget({
     super.key,
+    required this.answer1,
+    required this.answer2,
+    required this.answer3,
+    required this.answer4,
+    required this.correctAnswer,
+    this.isManage = false, this.answerChanged,
   });
+  final String answer1;
+  final String answer2;
+  final String answer3;
+  final String answer4;
+  final String correctAnswer;
+  final bool isManage;
+  final ValueChanged<bool>? answerChanged;
 
   @override
   State<QuestionWidget> createState() => _QuestionWidgetState();
@@ -25,7 +39,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
             Uri.parse(
                 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
             videoPlayerOptions:
-            VideoPlayerOptions(allowBackgroundPlayback: false)));
+                VideoPlayerOptions(allowBackgroundPlayback: false)));
     super.initState();
   }
 
@@ -58,14 +72,53 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         Row(
           children: [
             CustomChooseWidget(
-              title: 'فهد',
+              onPressed: () {
+                if (!widget.isManage) {
+                  if (widget.answer1 == widget.correctAnswer) {
+                    widget.answerChanged!(true);
+                    setState(() {
+                    });
+                    customAnswerDialog(
+                        context: context,
+                        message: 'الجواب صحيح',
+                        icon: AssetsData.correctAnswer);
+                  } else {
+                    widget.answerChanged!(false);
+                    setState(() {});
+                    customAnswerDialog(
+                        context: context,
+                        message: 'الجواب خاطئ',
+                        icon: AssetsData.wrongAnswer);
+                  }
+                }
+              },
+              title: widget.answer1,
               color: AppColor.lightPinkColor,
             ),
             SizedBox(
               width: 20,
             ),
             CustomChooseWidget(
-              title: 'فيل',
+              onPressed: () {
+                if (!widget.isManage) {
+                  if (widget.answer2 == widget.correctAnswer) {
+                    widget.answerChanged!(true);
+                    setState(() {});
+                    customAnswerDialog(
+                        context: context,
+                        message: 'الجواب صحيح',
+                        icon: AssetsData.correctAnswer);
+                  } else {
+                    widget.answerChanged!(false);
+                    setState(() {});
+                    customAnswerDialog(
+                        context: context,
+                        message: 'الجواب خاطئ',
+                        icon: AssetsData.wrongAnswer);
+                  }
+                }
+              },
+              title: widget.answer2,
               color: AppColor.primaryColor,
             ),
           ],
@@ -76,14 +129,52 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         Row(
           children: [
             CustomChooseWidget(
-              title: 'سمكة',
+              onPressed: () {
+                if (!widget.isManage) {
+                  if (widget.answer3 == widget.correctAnswer) {
+                    widget.answerChanged!(true);
+                    setState(() {});
+                    customAnswerDialog(
+                        context: context,
+                        message: 'الجواب صحيح',
+                        icon: AssetsData.correctAnswer);
+                  } else {
+                    widget.answerChanged!(false);
+                    setState(() {});
+                    customAnswerDialog(
+                        context: context,
+                        message: 'الجواب خاطئ',
+                        icon: AssetsData.wrongAnswer);
+                  }
+                }
+              },
+              title: widget.answer3,
               color: AppColor.greenColor,
             ),
             SizedBox(
               width: 20,
             ),
             CustomChooseWidget(
-              title: 'فراشة',
+              onPressed: () {
+                if (!widget.isManage) {
+                  if (widget.answer4 == widget.correctAnswer) {
+                    widget.answerChanged!(true);
+                    setState(() {});
+                    customAnswerDialog(
+                        context: context,
+                        message: 'الجواب صحيح',
+                        icon: AssetsData.correctAnswer);
+                  } else {
+                    widget.answerChanged!(false);
+                    setState(() {});
+                    customAnswerDialog(
+                        context: context,
+                        message: 'الجواب خاطئ',
+                        icon: AssetsData.wrongAnswer);
+                  }
+                }
+              },
+              title: widget.answer4,
               color: AppColor.pinkColor,
             ),
           ],
