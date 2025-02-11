@@ -34,7 +34,7 @@ Future customAlertDialog({
                     padding: const EdgeInsets.all(10.0),
                     child:Icon(
                       Icons.delete,
-                      color: AppColor.redColor,
+                      color: AppColor.pinkColor,
                       size: 30,),
                   ),
                 ),
@@ -65,7 +65,7 @@ Future customAlertDialog({
                       mainTitle: 'تاكيد',
                       textColor: AppColor.whiteColor,
                       onTaped: onConfirm,
-                      buttonBackgroundColor: AppColor.redColor,
+                      buttonBackgroundColor: AppColor.pinkColor,
                     ),
                     CustomTextButtonForDialog(
                       mainTitle: 'إلغاء',

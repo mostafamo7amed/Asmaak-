@@ -1,5 +1,5 @@
 import 'package:asmaak/features/home/domain/entity/lesson_entity.dart';
-import 'package:asmaak/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:asmaak/features/home/presentation/views/widgets/build_home_app_bar.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/custom_basics_dialog.dart';
 import 'package:flutter/material.dart';
 
@@ -124,68 +124,70 @@ class BasicsView extends StatelessWidget {
       title: 'الغاين',
       image: AssetsData.s,
       cover: AssetsData.s19,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '20',
       title: 'الفاء',
       image: AssetsData.t,
       cover: AssetsData.t20,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '21',
       title: 'القاف',
       image: AssetsData.u,
       cover: AssetsData.u21,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '22',
       title: 'الكاف',
       image: AssetsData.v,
       cover: AssetsData.v22,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '23',
       title: 'اللام',
       image: AssetsData.w,
       cover: AssetsData.w23,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '24',
       title: 'الميم',
       image: AssetsData.x,
       cover: AssetsData.x24,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '25',
       title: 'الهاء',
       image: AssetsData.y,
       cover: AssetsData.y26,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '26',
       title: 'الواو',
       image: AssetsData.z,
       cover: AssetsData.z27,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '27',
       title: 'النون',
       image: AssetsData.zz,
       cover: AssetsData.zz25,
-      ),
-      LessonEntity(
+    ),
+    LessonEntity(
       id: '28',
       title: 'الياء',
       image: AssetsData.zzz,
       cover: AssetsData.zzz28,
-      ),
-
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(context,title: 'الأحرف'),
+      appBar: buildHomeAppBar(
+        context,
+        title: 'الأحرف',
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: GridView.builder(
@@ -195,7 +197,14 @@ class BasicsView extends StatelessWidget {
               crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
           itemBuilder: (context, index) => GestureDetector(
             onTap: () {
-              customBasicsDialog(context: context, message: characters[index].title, image: characters[index].cover);
+              customBasicsDialog(
+                  context: context,
+                  message: characters[index].title,
+                  image: characters[index].cover,
+                onConfirm: () {
+                    Navigator.pop(context);
+                }
+              );
             },
             child: Card(
               elevation: 2,

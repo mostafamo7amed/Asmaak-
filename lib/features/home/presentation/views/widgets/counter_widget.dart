@@ -36,14 +36,14 @@ class CounterWidget extends StatelessWidget {
             decoration: BoxDecoration(
               color: isCorrect ? AppColor.greenColor : isWrong ? AppColor.redColor : AppColor.whiteColor,
               shape: BoxShape.circle,
-              border: Border.all(color: AppColor.blackColor),
+              border: Border.all(color: isSelected ? AppColor.blackColor : AppColor.grayColor),
             ),
             child: FittedBox(
               child: Padding(
                 padding: const EdgeInsets.all(3.0),
                 child: Text(
                   number.toString(),
-                  style: Styles.bold16,
+                  style: Styles.bold16.copyWith(color: isSelected ? AppColor.blackColor : AppColor.grayColor ),
                 ),
               ),
             ),

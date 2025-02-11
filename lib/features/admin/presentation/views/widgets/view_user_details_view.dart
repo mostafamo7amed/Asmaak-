@@ -37,7 +37,7 @@ class ViewUserDetailsView extends StatelessWidget {
                 ),
                 child: Text(
                   'هيفاء تركي',
-                  style: Styles.bold19.copyWith(color: AppColor.blackColor),
+                  style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
               SizedBox(
@@ -59,7 +59,7 @@ class ViewUserDetailsView extends StatelessWidget {
                 ),
                 child: Text(
                   'nHn4o@example.com',
-                  style: Styles.bold19.copyWith(color: AppColor.blackColor),
+                  style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
               SizedBox(
@@ -81,7 +81,7 @@ class ViewUserDetailsView extends StatelessWidget {
                 ),
                 child: Text(
                   '2015-01-01',
-                  style: Styles.bold19.copyWith(color: AppColor.blackColor),
+                  style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
               SizedBox(
@@ -103,7 +103,7 @@ class ViewUserDetailsView extends StatelessWidget {
                 ),
                 child: Text(
                   'أنثى',
-                  style: Styles.bold19.copyWith(color: AppColor.blackColor),
+                  style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
               SizedBox(
@@ -125,7 +125,7 @@ class ViewUserDetailsView extends StatelessWidget {
                 ),
                 child: Text(
                   'مستوى متوسط',
-                  style: Styles.bold19.copyWith(color: AppColor.blackColor),
+                  style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
               SizedBox(

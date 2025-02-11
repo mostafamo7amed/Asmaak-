@@ -1,6 +1,6 @@
 import 'package:asmaak/core/utils/widgets/custom_button.dart';
 import 'package:asmaak/features/home/presentation/views/quiz_view.dart';
-import 'package:asmaak/features/home/presentation/views/widgets/custom_app_bar.dart';
+import 'package:asmaak/features/home/presentation/views/widgets/build_home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animation_progress_bar/flutter_animation_progress_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +15,7 @@ class ProgressView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(context, title: 'الاختبارات', showProgress: false),
+      appBar: buildHomeAppBar(context, title: 'الاختبارات',),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: CustomButton(
         color: AppColor.lightPinkColor,

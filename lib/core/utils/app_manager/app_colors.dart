@@ -6,6 +6,8 @@ class AppColor {
   static Color blackColor = const Color(0xff000000);
   static Color pinkColor = const Color(0xffD13AA0);
   static Color lightPinkColor = const Color(0xffF69CAB);
+  static Color wightPinkColor = const Color(0xffeecaca);
+  static Color grayColor = const Color(0xffAEAEAE);
   static Color greenColor = const Color(0xff7CBCA7);
   static Color lightGreenColor = const Color(0xffB0C83E);
   static Color purpleColor = const Color(0xff654C9C);
