@@ -28,7 +28,6 @@ class _QuizViewState extends State<QuizView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(context, title: 'الاختبارات', showProgress: false,showProfile: false),
-
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Column(

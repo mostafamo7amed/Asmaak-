@@ -1,6 +1,7 @@
 import 'package:asmaak/core/utils/app_manager/app_colors.dart';
 import 'package:asmaak/features/on_boarding/presentation/views/on_boarding_1_view.dart';
 import 'package:bloc/bloc.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -10,16 +11,19 @@ import 'core/services/app_references.dart';
 import 'core/services/custom_bloc_observer.dart';
 import 'core/services/dependency_injection.dart';
 import 'core/services/git_it_services.dart';
+import 'firebase_options.dart';
 import 'generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await AppReference.init();
   setupGitIt();
   Bloc.observer = CustomBlocObserver();
   runApp(const Asmaak());
   DependencyInjection.init();
-
 }
 
 class Asmaak extends StatelessWidget {
@@ -29,7 +33,7 @@ class Asmaak extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      locale: Locale('ar','SA'),
+      locale: Locale('ar', 'SA'),
       localizationsDelegates: [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -41,7 +45,7 @@ class Asmaak extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: AppColor.backgroundColor,
         fontFamily: 'Cairo',
-          colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,

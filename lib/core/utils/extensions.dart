@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 extension WidgetExtension on Widget? {
+
   /// return padding symmetric
   Padding paddingSymmetric({double vertical = 0.0, double horizontal = 0.0}) {
     return Padding(
@@ -105,6 +106,14 @@ extension StringExtension on String? {
   String capitalizeFirstLetter() => (validate().isNotEmpty)
       ? (this!.substring(0, 1).toUpperCase() + this!.substring(1).toLowerCase())
       : validate();
+}
+
+extension EmailValidator on String {
+  bool isValidEmail() {
+    return RegExp(
+        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+        .hasMatch(this);
+  }
 }
 
 /// Context Extensions
