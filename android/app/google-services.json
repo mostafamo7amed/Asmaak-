@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "401321168981",
+    "project_id": "asmaak-f1704",
+    "storage_bucket": "asmaak-f1704.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401321168981:android:eaa1308a4d372350b184dc",
+        "android_client_info": {
+          "package_name": "com.example.asmaak"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo-SA849UP15dJ1xEoFrkDt50wcrhTFk4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
