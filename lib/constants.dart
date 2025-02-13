@@ -13,3 +13,7 @@ final List<Color> colors = [
   AppColor.yellowTextColor,
   AppColor.purpleTextColor,
 ];
+
+const String userCollection = 'users';
+const String adminCollection = 'admin';
+const String authKey = 'authKey';

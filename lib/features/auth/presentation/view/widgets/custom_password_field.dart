@@ -6,14 +6,14 @@ class CustomPasswordFormField extends StatefulWidget {
   const CustomPasswordFormField({
     super.key,
     required this.onSaved,
-    required this.validator,
     this.hintText,
     this.showValidation = false,
+    this.isLogin = false,
   });
   final bool showValidation;
   final ValueChanged<String?> onSaved;
   final String? hintText;
-  final String? Function(String?)? validator;
+  final bool? isLogin;
 
   @override
   State<CustomPasswordFormField> createState() =>
@@ -41,7 +41,26 @@ class _CustomPasswordFormFieldState extends State<CustomPasswordFormField> {
       children: [
         CustomTextFormField(
           controller: passwordController,
-          validator: widget.validator,
+          validator: (value) {
+            if (widget.isLogin == true) {
+              if (value!.isEmpty) {
+                return 'الرجاء ادخال كلمة المرور';
+              }
+              return null;
+            } else {
+              if (value!.isEmpty) {
+                return 'الرجاء ادخال كلمة المرور';
+              } else if (!_hasMinLength) {
+                return 'كلمة المرور اقل من 8 حروف';
+              } else if (!_hasUpperCase) {
+                return 'كلمة المرور يجب ان تحتوي على حرف كبير';
+              } else if (!_hasSpecialChar) {
+                return 'كلمة المرور يجب ان تحتوي على رمز خاص';
+              } else {
+                return null;
+              }
+            }
+          },
           obscureText: isObscure,
           onChanged: (value) {
             _validatePassword(value);
