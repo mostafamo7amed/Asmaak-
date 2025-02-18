@@ -17,3 +17,4 @@ final List<Color> colors = [
 const String userCollection = 'users';
 const String adminCollection = 'admin';
 const String authKey = 'authKey';
+const String basicsKey = 'basicsKey';

@@ -192,7 +192,7 @@ class _RegisterViewState extends State<RegisterView> {
                             ),
                             CustomButton(
                               onPressed: () {
-                                if (formKey.currentState!.validate()) {
+                               /* if (formKey.currentState!.validate()) {
                                   formKey.currentState!.save();
                                   if (password != confirmPassword) {
                                     getSnackBar('كلمة المرور غير متطابقة');
@@ -203,7 +203,7 @@ class _RegisterViewState extends State<RegisterView> {
                                           password: password!,
                                         );
                                   }
-                                }
+                                }*/
                               },
                               text: 'إنشاء حساب',
                             ),
