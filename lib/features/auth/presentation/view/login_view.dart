@@ -5,6 +5,7 @@ import 'package:asmaak/core/utils/widgets/custom_text_form_field.dart';
 import 'package:asmaak/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:asmaak/features/auth/presentation/view/register_view.dart';
 import 'package:asmaak/features/auth/presentation/view/widgets/custom_password_field.dart';
+import 'package:asmaak/features/home/presentation/views/user_home_root.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,6 +15,7 @@ import '../../../../core/helper_functions/auth_linear_gradient.dart';
 import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
+import '../../../admin/presentation/views/admin_home_view.dart';
 import 'forget_password.dart';
 
 class LoginView extends StatefulWidget {
@@ -164,10 +166,18 @@ class _LoginViewState extends State<LoginView> {
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
                                   formKey.currentState!.save();
-                                  autoValidateMode = AutovalidateMode.disabled;
+                                  /* autoValidateMode = AutovalidateMode.disabled;
                                   context
                                       .read<LoginCubit>()
-                                      .login(email!, password!);
+                                      .login(email!, password!);*/
+                                  if (email == 'admin@asmaak.com' && password == '123') {
+                                    Navigator.pushReplacementNamed(
+                                        context, AdminHomeView.routeName);
+                                  } else if (email == 'user@asmaak.com' &&
+                                      password == '123') {
+                                    Navigator.pushReplacementNamed(
+                                        context, UserHomeRoot.routeName);
+                                  }
                                 }
                               },
                               text: 'تسجيل الدخول',

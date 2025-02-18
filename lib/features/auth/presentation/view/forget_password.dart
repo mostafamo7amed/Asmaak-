@@ -125,12 +125,12 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           ),
                           CustomButton(
                             onPressed: () {
-                              if (formKey.currentState!.validate()) {
+                             /* if (formKey.currentState!.validate()) {
                                 formKey.currentState!.save();
                                 context
                                     .read<LoginCubit>()
                                     .resetPassword(email!);
-                              }
+                              }*/
                             },
                             text: 'أرسال الرمز',
                           ),

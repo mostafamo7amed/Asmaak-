@@ -1,3 +1,5 @@
+import 'package:asmaak/constants.dart';
+import 'package:asmaak/core/services/app_references.dart';
 import 'package:asmaak/features/home/domain/entity/lesson_entity.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/build_home_app_bar.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/custom_basics_dialog.dart';
@@ -7,9 +9,14 @@ import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
 
-class BasicsView extends StatelessWidget {
-  BasicsView({super.key});
+class BasicsView extends StatefulWidget {
+  const BasicsView({super.key});
 
+  @override
+  State<BasicsView> createState() => _BasicsViewState();
+}
+
+class _BasicsViewState extends State<BasicsView> {
   final List<LessonEntity> characters = [
     LessonEntity(
       id: '1',
@@ -180,6 +187,27 @@ class BasicsView extends StatelessWidget {
       cover: AssetsData.zzz28,
     ),
   ];
+  List<String> items = List.generate(28, (index) => "Item ${index + 1}");
+  Set<String> cachedItems = {};
+  @override
+  void initState() {
+    super.initState();
+    loadCachedItems();
+  }
+
+  Future<void> loadCachedItems() async {
+    List<String> storedItems = await AppReference.getTappedItems(basicsKey);
+    setState(() {
+      cachedItems = storedItems.toSet();
+    });
+  }
+
+  void handleTap(String item) async {
+    await AppReference.saveTappedItem(basicsKey, item);
+    setState(() {
+      cachedItems.add(item);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -195,46 +223,50 @@ class BasicsView extends StatelessWidget {
           itemCount: characters.length,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
-          itemBuilder: (context, index) => GestureDetector(
-            onTap: () {
-              customBasicsDialog(
-                  context: context,
-                  message: characters[index].title,
-                  image: characters[index].cover,
-                onConfirm: () {
-                    Navigator.pop(context);
-                }
-              );
-            },
-            child: Card(
-              elevation: 2,
-              color: AppColor.whiteColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Image.asset(
-                        characters[index].image,
+          itemBuilder: (context, index) {
+            final item = items[index];
+            final isTapped = cachedItems.contains(item);
+            return GestureDetector(
+              onTap: () {
+                customBasicsDialog(
+                    context: context,
+                    message: characters[index].title,
+                    image: characters[index].cover,
+                    onConfirm: () {
+                      handleTap(item);
+                      Navigator.pop(context);
+                    });
+              },
+              child: Card(
+                elevation: 2,
+                color: isTapped ? AppColor.wightPinkColor : AppColor.whiteColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Image.asset(
+                          characters[index].image,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      characters[index].title,
-                      style: Styles.bold16,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        characters[index].title,
+                        style: Styles.bold16,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ),
     );

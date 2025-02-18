@@ -31,4 +31,22 @@ class AppReference {
   }) async {
     await sharedPreferences.remove(key);
   }
+
+
+  static Future<void> saveTappedItem(String key, String value) async {
+    List<String> savedItems = sharedPreferences.getStringList(key) ?? [];
+
+    if (!savedItems.contains(value)) {
+      savedItems.add(value);
+      await sharedPreferences.setStringList(key, savedItems);
+    }
+  }
+
+  static Future<List<String>> getTappedItems(String key) async {
+    return sharedPreferences.getStringList(key) ?? [];
+  }
+
+  static Future<void> clearTappedItems(String key) async {
+    await sharedPreferences.remove(key);
+  }
 }
