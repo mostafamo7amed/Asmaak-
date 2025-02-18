@@ -39,8 +39,8 @@ class _LoginViewState extends State<LoginView> {
       child: BlocConsumer<LoginCubit, LoginState>(
         listener: (context, state) {
           if (state is LoginSuccess) {
-            formKey.currentState!.reset();
             context.read<LoginCubit>().findUser(state.user.uid, context);
+            formKey.currentState!.reset();
           }
         },
         builder: (context, state) {
@@ -164,6 +164,7 @@ class _LoginViewState extends State<LoginView> {
                               onPressed: () {
                                 if (formKey.currentState!.validate()) {
                                   formKey.currentState!.save();
+                                  autoValidateMode = AutovalidateMode.disabled;
                                   context
                                       .read<LoginCubit>()
                                       .login(email!, password!);

@@ -43,7 +43,7 @@ class CounterWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(3.0),
                 child: Text(
                   number.toString(),
-                  style: Styles.bold16.copyWith(color: isSelected ? AppColor.blackColor : AppColor.grayColor ),
+                  style: Styles.bold16.copyWith(color: isSelected ? AppColor.blackColor :  isCorrect|| isWrong?AppColor.blackColor:AppColor.grayColor ),
                 ),
               ),
             ),

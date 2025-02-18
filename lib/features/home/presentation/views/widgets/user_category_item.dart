@@ -27,11 +27,8 @@ class UserCategoryItem extends StatelessWidget {
       ),
       child: Row(
         children: [
-          SizedBox(
-              width: 120, height: 100, child: SvgPicture.asset(category.image)),
-          const Spacer(),
           Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
                 padding: EdgeInsets.all(5),
@@ -73,7 +70,12 @@ class UserCategoryItem extends StatelessWidget {
                 style: Styles.bold19.copyWith(color: AppColor.whiteColor),
               )
             ],
-          )
+          ),
+          const Spacer(),
+          SizedBox(
+              width: 120, height: 100, child: SvgPicture.asset(category.image)),
+
+
         ],
       ),
     );

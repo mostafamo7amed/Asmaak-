@@ -39,7 +39,7 @@ class MyPointsView extends StatelessWidget {
                       width: 50,
                       AssetsData.lez,
                       ),
-                    Text('مستوي متوسط', style: Styles.bold23.copyWith(color: AppColor.purpleColor),),
+                    Text('مستوى متوسط', style: Styles.bold23.copyWith(color: AppColor.purpleColor),),
                     SizedBox(
                       width: 50,
                     )
@@ -223,8 +223,11 @@ class LastResultWidget extends StatelessWidget {
         color: AppColor.yellowTextColor.withValues(alpha: .4),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width*.26,
+          ),
           Icon(
             Icons.star,
             color: AppColor.purpleColor,

@@ -26,7 +26,8 @@ class LessonsGridView extends StatelessWidget {
             onTap: () {
               customViewLessonDialog(
                 image: AssetsData.cate,
-                  context: context, message: 'قطة', onConfirm: () {});
+                  context: context, message: 'قطة',
+                  );
             },
             child: Card(
               elevation: 2,

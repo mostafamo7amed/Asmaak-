@@ -19,11 +19,15 @@ class ManageLessonView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAdminAppBar(context, title: 'ادارة الدروس', showBack: true),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        addLessonDialog(context);
-      },
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          addLessonDialog(context);
+        },
         backgroundColor: AppColor.greenColor,
-        child: Text('اضافة',style: Styles.bold16.copyWith(color: AppColor.whiteColor),),
+        child: Text(
+          'اضافة',
+          style: Styles.bold16.copyWith(color: AppColor.whiteColor),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
@@ -32,10 +36,11 @@ class ManageLessonView extends StatelessWidget {
             const SizedBox(
               height: 10,
             ),
-            CustomDropdownList(onChanged: (value) {
-
-            }, list: ['حيوانات', 'عائلة', 'مشاعر', ]
-            ),
+            CustomDropdownList(onChanged: (value) {}, list: [
+              'حيوانات',
+              'عائلة',
+              'مشاعر',
+            ]),
             const SizedBox(
               height: 10,
             ),
@@ -46,7 +51,12 @@ class ManageLessonView extends StatelessWidget {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
                 itemBuilder: (context, index) => GestureDetector(
-                  onTap: () => customViewLessonDialog(context: context, message: 'قطة', image: AssetsData.cate,isManage: false, onConfirm: () {}),
+                  onTap: () => customViewLessonDialog(
+                    context: context,
+                    message: 'قطة',
+                    image: AssetsData.cate,
+                    isManage: false,
+                  ),
                   child: Card(
                     elevation: 2,
                     color: AppColor.whiteColor,
@@ -93,7 +103,8 @@ class ManageLessonView extends StatelessWidget {
                                   padding: EdgeInsets.all(5),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: AppColor.redColor)),
+                                      border:
+                                          Border.all(color: AppColor.redColor)),
                                   child: Icon(
                                     Icons.delete,
                                     color: AppColor.redColor,
@@ -111,7 +122,8 @@ class ManageLessonView extends StatelessWidget {
                                   padding: EdgeInsets.all(5),
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(10),
-                                      border: Border.all(color: AppColor.greenColor)),
+                                      border: Border.all(
+                                          color: AppColor.greenColor)),
                                   child: Icon(
                                     Icons.edit,
                                     color: AppColor.greenColor,

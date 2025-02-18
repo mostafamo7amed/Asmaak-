@@ -10,7 +10,6 @@ Future customViewLessonDialog({
   context,
   message,
   image,
-  onConfirm,
   isManage = true,
 }) =>
     showDialog(
@@ -87,7 +86,10 @@ Future customViewLessonDialog({
                       width: MediaQuery.of(context).size.width / 3,
                       text: 'تعلمت',
                       textColor: AppColor.whiteColor,
-                      onPressed: onConfirm,
+                      onPressed: () {
+                        flickManager.dispose();
+                        Navigator.pop(context);
+                      },
                     ),
                     const SizedBox(
                       height: 20,

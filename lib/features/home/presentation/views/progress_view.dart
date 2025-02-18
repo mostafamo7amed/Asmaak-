@@ -34,6 +34,7 @@ class ProgressView extends StatelessWidget {
             gradient: buildAuthLinearGradient(),
           ),
           child: Stack(
+            fit: StackFit.expand,
             children: [
               Positioned(
                 bottom: -10,
@@ -45,9 +46,9 @@ class ProgressView extends StatelessWidget {
               ),
               Positioned(
                 top: 0,
-                right: 60,
+                right: MediaQuery.of(context).size.width * .18,
                 child: SizedBox(
-                  height: MediaQuery.of(context).size.height * .35,
+                  height: MediaQuery.of(context).size.height * .33,
                   child: SvgPicture.asset(
                     AssetsData.dotLine,
                     fit: BoxFit.fill,
@@ -55,62 +56,62 @@ class ProgressView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 40,
-                left: 30,
+                top: MediaQuery.of(context).size.height * .08,
+                left: MediaQuery.of(context).size.width * .1,
                 child: FlowerWidget(),
               ),
               Positioned(
-                top: 15,
-                right: 150,
+                top: MediaQuery.of(context).size.height * .01,
+                right: MediaQuery.of(context).size.width * .41,
                 child: SvgPicture.asset(AssetsData.flower7),
               ),
               Positioned(
-                top: 40,
-                right: 30,
+                top: MediaQuery.of(context).size.height * .02,
+                right: MediaQuery.of(context).size.width * .1,
                 child: SvgPicture.asset(AssetsData.flower6),
               ),
               Positioned(
-                bottom: 250,
-                right: 150,
+                bottom: MediaQuery.of(context).size.height * .32,
+                right: MediaQuery.of(context).size.width * .42,
                 child: SvgPicture.asset(AssetsData.flower5),
               ),
               Positioned(
-                bottom: 250,
-                right: 135,
+                bottom: MediaQuery.of(context).size.height * .32,
+                right: MediaQuery.of(context).size.width * .35,
                 child: SvgPicture.asset(AssetsData.flower6),
               ),
               Positioned(
-                bottom: 230,
-                right: 150,
+                bottom: MediaQuery.of(context).size.height * .29,
+                right: MediaQuery.of(context).size.width * .43,
                 child: SvgPicture.asset(AssetsData.flower4),
               ),
               Positioned(
-                bottom: 180,
-                right: 190,
+                bottom: MediaQuery.of(context).size.height * .22,
+                right: MediaQuery.of(context).size.width * .53,
                 child: SvgPicture.asset(AssetsData.flower7),
               ),
               Positioned(
-                bottom: 40,
-                right: 10,
+                bottom: MediaQuery.of(context).size.height * .05,
+                right: MediaQuery.of(context).size.width * .01,
                 child: SvgPicture.asset(AssetsData.flower6),
               ),
               Positioned(
-                bottom: 10,
-                right: 120,
+                bottom: MediaQuery.of(context).size.height * .09,
+                right: MediaQuery.of(context).size.width * .3,
                 child: SvgPicture.asset(AssetsData.flower6),
               ),
               Positioned(
-                top: 90,
-                right: 30,
+                top: MediaQuery.of(context).size.height * .15,
+                right: MediaQuery.of(context).size.width * .1,
                 child: FlowerWidget(),
               ),
               Positioned(
-                  top: 270,
-                  left: -20,
+                  top: MediaQuery.of(context).size.height * .4,
+                  left: 0,
                   child: SvgPicture.asset(AssetsData.greenBack)),
               Positioned(
-                top: 250,
-                right: 25,
+                top: MediaQuery.of(context).size.height * .33,
+                right: MediaQuery.of(context).size.width * .07,
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * .25,
                   child: SvgPicture.asset(
@@ -120,8 +121,8 @@ class ProgressView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 250,
-                right: 30,
+                top: MediaQuery.of(context).size.height * .33,
+                right: MediaQuery.of(context).size.width * .1,
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * .25,
                   child: SvgPicture.asset(
@@ -131,8 +132,9 @@ class ProgressView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 430,
-                right: 35,
+                top: MediaQuery.of(context).size.height * .55,
+                right: MediaQuery.of(context).size.width * .09,
+                bottom: 0,
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * .25,
                   child: SvgPicture.asset(
@@ -142,8 +144,9 @@ class ProgressView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 430,
-                right: 35,
+                top: MediaQuery.of(context).size.height * .55,
+                right: MediaQuery.of(context).size.width * .09,
+                bottom: 0,
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * .25,
                   child: SvgPicture.asset(
@@ -153,49 +156,49 @@ class ProgressView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 5,
-                right: 135,
+                top: MediaQuery.of(context).size.height * .01,
+                right: MediaQuery.of(context).size.width * .4,
                 child: SizedBox(
-                  height: 70,
-                  width: 70,
+                  height: MediaQuery.of(context).size.height * .1,
+                  width: MediaQuery.of(context).size.width * .2,
                   child: SvgPicture.asset(AssetsData.warm),
                 ),
               ),
               Positioned(
-                top: 120,
-                right: 120,
+                top: MediaQuery.of(context).size.height * .18,
+                right: MediaQuery.of(context).size.width * .35,
                 child: SizedBox(
-                  height: 50,
-                  width: 50,
+                  height: MediaQuery.of(context).size.height * .1,
+                  width: MediaQuery.of(context).size.width * .15,
                   child: SvgPicture.asset(AssetsData.fly),
                 ),
               ),
               Positioned(
-                top: 240,
-                right: 65,
+                top: MediaQuery.of(context).size.height * .29,
+                right: MediaQuery.of(context).size.width * .18,
                 child: SizedBox(
-                  height: 60,
-                  width: 60,
+                  height: MediaQuery.of(context).size.height * .1,
+                  width: MediaQuery.of(context).size.width * .2,
                   child: SvgPicture.asset(AssetsData.snail),
                 ),
               ),
               Positioned(
-                top: 245,
+                top:  MediaQuery.of(context).size.height * .31,
                 left: 0,
-                right: 20,
+                right: MediaQuery.of(context).size.width * .1,
                 child: SizedBox(
-                  width: 10,
-                  height: 60,
+                  width: MediaQuery.of(context).size.width * .5,
+                  height: MediaQuery.of(context).size.height * .08,
                   child: Stack(
                     alignment: Alignment.center,
                     children: [
                       SvgPicture.asset(AssetsData.yellowBack),
                       Positioned(
-                        top: 13,
+                        top: MediaQuery.of(context).size.height * .02,
                         left: 0,
-                        right: 20,
+                        right: MediaQuery.of(context).size.width * .06,
                         child: Text(
-                          'مستوي متوسط',
+                          'مستوى متوسط',
                           textAlign: TextAlign.center,
                           style: Styles.bold16
                               .copyWith(color: AppColor.whiteColor),
@@ -206,26 +209,26 @@ class ProgressView extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 390,
-                right: 120,
+                top: MediaQuery.of(context).size.height * .49,
+                right: MediaQuery.of(context).size.width * .3,
                 child: SizedBox(
-                  height: 70,
-                  width: 70,
+                  height: MediaQuery.of(context).size.height * .1,
+                  width: MediaQuery.of(context).size.width * .24,
                   child: SvgPicture.asset(AssetsData.spider),
                 ),
               ),
               Positioned(
-                bottom: 10,
-                right: 30,
+                bottom: MediaQuery.of(context).size.height * .02,
+                right: MediaQuery.of(context).size.width * .1,
                 child: SizedBox(
-                  height: 60,
-                  width: 50,
+                  height: MediaQuery.of(context).size.height * .1,
+                  width: MediaQuery.of(context).size.width * .15,
                   child: SvgPicture.asset(AssetsData.lez),
                 ),
               ),
               Positioned(
-                left: 15,
-                bottom: 50,
+                left: MediaQuery.of(context).size.width * .05,
+                bottom: MediaQuery.of(context).size.height * .1,
                 child: SizedBox(
                   width: 20,
                   height: MediaQuery.of(context).size.height * .5,
@@ -255,8 +258,8 @@ class FlowerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 60,
-      height: 70,
+      width: MediaQuery.of(context).size.width * .17,
+      height: MediaQuery.of(context).size.height * .1,
       child: Stack(
         children: [
           Positioned(
