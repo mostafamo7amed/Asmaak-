@@ -51,7 +51,7 @@ class LoginCubit extends Cubit<LoginState> {
     try {
       await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
       emit(LoginResetPasswordSuccess());
-    }  on FirebaseAuthException catch (e) {
+    } on FirebaseAuthException catch (e) {
       log('Exception: in FirebaseAuthServices.sendPasswordResetEmail ${e.toString()}');
       if (e.code == 'user-not-found') {
         getSnackBar('البيانات غير صحيحة');
@@ -59,29 +59,41 @@ class LoginCubit extends Cubit<LoginState> {
         getSnackBar('البيانات غير صحيحة');
       } else if (e.code == 'invalid-email') {
         getSnackBar('البيانات غير صحيحة');
-      }  else if (e.code == 'network-request-failed') {
+      } else if (e.code == 'network-request-failed') {
         getSnackBar('تحقق من اتصالك بالانترنت');
       }
-    }catch(e){
+    } catch (e) {
       log('Exception: in FirebaseAuthServices.sendPasswordResetEmail ${e.toString()}');
       getSnackBar('حدث خطأ ، يرجى المحاولة مرة اخرى');
       emit(LoginResetPasswordError());
     }
-
   }
 
-
-  Future<void> findUser(String uid,BuildContext context) async {
-    var userData = await FirebaseFirestore.instance.collection(userCollection).doc(uid).get();
-    if(userData.exists){
-      if(context.mounted) {
-        Navigator.pushNamed(context, UserHomeRoot.routeName);
+  Future<void> findUser(String uid, BuildContext context) async {
+    var userData = await FirebaseFirestore.instance
+        .collection(userCollection)
+        .doc(uid)
+        .get();
+    if (userData.exists) {
+      if (context.mounted) {
+        Navigator.pushReplacementNamed(context, UserHomeRoot.routeName);
         emit(LoginFindUserState());
       }
-    }else{
-      if(context.mounted) {
-        Navigator.pushNamed(context, AdminHomeView.routeName);
-        emit(LoginFindAdminState());
+    } else {
+      var adminData = await FirebaseFirestore.instance
+          .collection(adminCollection)
+          .doc(uid)
+          .get();
+      if (adminData.exists) {
+        if (context.mounted) {
+          Navigator.pushReplacementNamed(context, AdminHomeView.routeName);
+          emit(LoginFindAdminState());
+        }
+      } else {
+        if (context.mounted) {
+          getSnackBar('البيانات غير صحيحة');
+          emit(LoginError());
+        }
       }
     }
   }

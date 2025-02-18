@@ -40,6 +40,7 @@ class MyProfileView extends StatelessWidget {
                     height: MediaQuery.of(context).size.width * .5,
                     width: MediaQuery.of(context).size.width * .5,
                     child: Stack(
+                      alignment: Alignment.center,
                       children: [
                         CircleAvatar(
                           backgroundColor: AppColor.lightPinkColor.withValues(alpha: 0.7),
@@ -84,7 +85,6 @@ class MyProfileView extends StatelessWidget {
                 GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, EditProfileView.routeName);
-
                   },
                   child: Container(
                     color: AppColor.lightGrayColor.withValues(alpha: 0.2),

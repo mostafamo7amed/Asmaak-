@@ -1,4 +1,5 @@
 import 'package:asmaak/core/utils/widgets/custom_button.dart';
+import 'package:asmaak/features/home/presentation/views/user_home_root.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -24,7 +25,7 @@ Future customResultDialog({context, message,score}) => showDialog(
                   width: double.infinity,
                   padding: const EdgeInsets.all(10),
                   margin: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * .2,
+                    top: MediaQuery.of(context).size.height * .21,
                     left: MediaQuery.of(context).size.width * .07,
                     right: MediaQuery.of(context).size.width * .07,
                     bottom: 10,
@@ -44,7 +45,6 @@ Future customResultDialog({context, message,score}) => showDialog(
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-
                       const SizedBox(
                         height: 20,
                       ),
@@ -116,7 +116,7 @@ Future customResultDialog({context, message,score}) => showDialog(
                         height: 40,
                         text: 'حسناً',
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.pushReplacementNamed(context, UserHomeRoot.routeName);
                       },),
                       const SizedBox(
                         height: 10,
@@ -128,24 +128,33 @@ Future customResultDialog({context, message,score}) => showDialog(
                   top: 0,
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
-                    child: Stack(
-                      alignment: Alignment.bottomCenter,
-                      children: [
-                        SvgPicture.asset(
-                          width: MediaQuery.of(context).size.width * .75,
-                          AssetsData.result,
-                          allowDrawingOutsideViewBox: true,
-                          fit: BoxFit.scaleDown,
-                        ),
-                        Positioned(
-                            bottom: 45,
-                            child: Text(
-                              message,
-                              style: Styles.bold19
-                                  .copyWith(color: AppColor.whiteColor),
-                            ),
-                        ),
-                      ],
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width * .8,
+                      height: MediaQuery.of(context).size.height * .23,
+                      child: Stack(
+                        alignment: Alignment.bottomCenter,
+                        children: [
+                          SvgPicture.asset(
+                            width: MediaQuery.of(context).size.width * .8,
+                            AssetsData.result,
+                            allowDrawingOutsideViewBox: true,
+                            fit: BoxFit.scaleDown,
+                          ),
+                          Positioned(
+                              bottom: 0,
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width * .8,
+                                height: MediaQuery.of(context).size.height * .1,
+                                child: Text(
+                                  message,
+                                  textAlign: TextAlign.center,
+                                  style: Styles.bold19
+                                      .copyWith(color: AppColor.whiteColor),
+                                ),
+                              ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
