@@ -5,7 +5,6 @@ import 'package:asmaak/features/admin/presentation/views/widgets/admin_panel_ite
 import 'package:asmaak/features/admin/presentation/views/widgets/build_admin_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-
 import '../../../../core/helper_functions/auth_linear_gradient.dart';
 import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
@@ -32,7 +31,7 @@ class ManageView extends StatelessWidget {
               children: [
                 Text('مرحبا بك, مدير النظام',style: Styles.bold19.copyWith(color: AppColor.primaryColor),),
                 const SizedBox(height: 5,),
-                Text("يمكنك أدارة المحتوي والاختبارات هنا",style: Styles.regular16.copyWith(color: AppColor.lightGrayColor),),
+                Text("يمكنك ادارة المحتوى والدروس والاختبارات هنا",style: Styles.regular16.copyWith(color: AppColor.lightGrayColor),),
                 SizedBox(height: 30,),
                 Align(
                     alignment: Alignment.topRight,
@@ -40,7 +39,7 @@ class ManageView extends StatelessWidget {
                 ),
                 SizedBox(height: 30,),
                 AdminPanelItem(
-                  title: 'إدارة المحتوي',
+                  title: 'إدارة المحتوى',
                   icon: AssetsData.settings,
                   onTap: () {
                     Navigator.pushNamed(context, ManageCategoryView.routeName);
@@ -73,7 +72,6 @@ class ManageView extends StatelessWidget {
         ),
       ),
     );
-
   }
 }
 

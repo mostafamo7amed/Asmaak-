@@ -25,176 +25,176 @@ class _ManageQuizViewState extends State<ManageQuizView> {
     return Scaffold(
       appBar:
           buildAdminAppBar(context, title: 'ادارة الاختبارات', showBack: true),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.pushNamed(context, AddQuizView.routeName);
-        },
-        backgroundColor: AppColor.greenColor,
-        child: Text(
-          'اضافة',
-          style: Styles.bold16.copyWith(color: AppColor.whiteColor),
-        ),
-      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0),
-        child: Column(
-          children: [
-            const SizedBox(
-              height: 10,
-            ),
-            CustomDropdownList(onChanged: (value) {
-
-            }, list: ['حيوانات', 'عائلة', 'مشاعر', ]
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CounterWidget(
-                        number: "١",
-                        isSelected: currentQuestionIndex == 0 ? true : false,
-                        isCorrect: false,
-                        isWrong: false,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      CounterWidget(
-                        number: "٢",
-                        isSelected: currentQuestionIndex == 1 ? true : false,
-                        isCorrect: false,
-                        isWrong: false,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      CounterWidget(
-                        number: "٣",
-                        isSelected: currentQuestionIndex == 2 ? true : false,
-                        isCorrect: false,
-                        isWrong: false,
-                      ),
-                      SizedBox(
-                        width: 15,
-                      ),
-                      CounterWidget(
-                        number: "٤",
-                        isSelected: currentQuestionIndex == 3 ? true : false,
-                        isCorrect: false,
-                        isWrong: false,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Expanded(
-                    child: PageView(
-                      physics: NeverScrollableScrollPhysics(),
-                      controller: pageController,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(
+                height: 10,
+              ),
+              CustomDropdownList(onChanged: (value) {
+          
+              }, list: ['حيوانات', 'عائلة', 'مشاعر', ]
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.78,
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        QuestionWidget(
-                          isManage: true,
-                          answer1: 'فهد',
-                          answer2: 'نمر',
-                          answer3: 'فراشة',
-                          answer4: 'عصفور',
-                          correctAnswer: 'فراشة',
+                        CounterWidget(
+                          number: "١",
+                          isSelected: currentQuestionIndex == 0 ? true : false,
+                          isCorrect: false,
+                          isWrong: false,
                         ),
-                        QuestionWidget(
-                          isManage: true,
-                          answer1: 'فهد',
-                          answer2: 'نمر',
-                          answer3: 'فراشة',
-                          answer4: 'عصفور',
-                          correctAnswer: 'فراشة',
+                        SizedBox(
+                          width: 15,
                         ),
-                        QuestionWidget(
-                          isManage: true,
-                          answer1: 'فهد',
-                          answer2: 'نمر',
-                          answer3: 'فراشة',
-                          answer4: 'عصفور',
-                          correctAnswer: 'فراشة',
+                        CounterWidget(
+                          number: "٢",
+                          isSelected: currentQuestionIndex == 1 ? true : false,
+                          isCorrect: false,
+                          isWrong: false,
                         ),
-                        QuestionWidget(
-                          isManage: true,
-                          answer1: 'فهد',
-                          answer2: 'نمر',
-                          answer3: 'فراشة',
-                          answer4: 'عصفور',
-                          correctAnswer: 'فراشة',
+                        SizedBox(
+                          width: 15,
+                        ),
+                        CounterWidget(
+                          number: "٣",
+                          isSelected: currentQuestionIndex == 2 ? true : false,
+                          isCorrect: false,
+                          isWrong: false,
+                        ),
+                        SizedBox(
+                          width: 15,
+                        ),
+                        CounterWidget(
+                          number: "٤",
+                          isSelected: currentQuestionIndex == 3 ? true : false,
+                          isCorrect: false,
+                          isWrong: false,
                         ),
                       ],
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          if (currentQuestionIndex > 0) {
-                            pageController.jumpToPage(--currentQuestionIndex);
-                            setState(() {});
-                          }
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: AppColor.primaryColor,
-                            borderRadius: BorderRadius.circular(12),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Expanded(
+                      child: PageView(
+                        physics: NeverScrollableScrollPhysics(),
+                        controller: pageController,
+                        children: [
+                          QuestionWidget(
+                            isManage: true,
+                            answer1: 'فهد',
+                            answer2: 'نمر',
+                            answer3: 'فراشة',
+                            answer4: 'عصفور',
+                            correctAnswer: 'فراشة',
                           ),
-                          child: Icon(
-                            size: 30,
-                            Icons.arrow_back,
-                            color: AppColor.whiteColor,
+                          QuestionWidget(
+                            isManage: true,
+                            answer1: 'فهد',
+                            answer2: 'نمر',
+                            answer3: 'فراشة',
+                            answer4: 'عصفور',
+                            correctAnswer: 'فراشة',
+                          ),
+                          QuestionWidget(
+                            isManage: true,
+                            answer1: 'فهد',
+                            answer2: 'نمر',
+                            answer3: 'فراشة',
+                            answer4: 'عصفور',
+                            correctAnswer: 'فراشة',
+                          ),
+                          QuestionWidget(
+                            isManage: true,
+                            answer1: 'فهد',
+                            answer2: 'نمر',
+                            answer3: 'فراشة',
+                            answer4: 'عصفور',
+                            correctAnswer: 'فراشة',
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            if (currentQuestionIndex > 0) {
+                              pageController.jumpToPage(--currentQuestionIndex);
+                              setState(() {});
+                            }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: AppColor.primaryColor,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Icon(
+                              size: 30,
+                              Icons.arrow_back,
+                              color: AppColor.whiteColor,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      GestureDetector(
-                        onTap: () {
-                          if (currentQuestionIndex < 3) {
-                            pageController.jumpToPage(++currentQuestionIndex);
-                            setState(() {});
-                          }
-                        },
-                        child: Container(
-                          padding: EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                            color: AppColor.primaryColor,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Icon(
-                            size: 30,
-                            Icons.arrow_forward,
-                            color: AppColor.whiteColor,
+                        SizedBox(
+                          width: 20,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            if (currentQuestionIndex < 3) {
+                              pageController.jumpToPage(++currentQuestionIndex);
+                              setState(() {});
+                            }
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              color: AppColor.primaryColor,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: Icon(
+                              size: 30,
+                              Icons.arrow_forward,
+                              color: AppColor.whiteColor,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  CustomButton(onPressed: () {
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    CustomButton(onPressed: () {
 
-                  },
-                  text: 'حذف الاختبار',),
-                  SizedBox(
-                    height: 50,
-                  ),
-                ],
+                    },
+                    text: 'حذف الاختبار',),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    CustomButton(
+                      color: AppColor.greenColor,
+                      onPressed: () {
+
+                    },
+                      text: 'اضافة',),
+                  ],
+                ),
               ),
-            )
-          ]
+              SizedBox(height: 30,)
+            ]
+          ),
         ),
       ),
     );

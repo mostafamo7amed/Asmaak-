@@ -4,6 +4,7 @@ import 'package:asmaak/features/admin/presentation/views/manage_quiz_view.dart';
 import 'package:asmaak/features/admin/presentation/views/widgets/add_quiz_view.dart';
 import 'package:asmaak/features/admin/presentation/views/widgets/view_user_details_view.dart';
 import 'package:asmaak/features/home/presentation/views/my_points_view.dart';
+import 'package:asmaak/features/home/presentation/views/my_profile_view.dart';
 import 'package:asmaak/features/home/presentation/views/notification_view.dart';
 import 'package:asmaak/features/home/presentation/views/privacy_view.dart';
 import 'package:asmaak/features/home/presentation/views/user_home_root.dart';
@@ -45,6 +46,10 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const QuizView());
     case MyPointsView.routeName:
       return MaterialPageRoute(builder: (_) => const MyPointsView());
+    case MyProfileView.routeName:
+      return MaterialPageRoute(builder: (_) => MyProfileView(
+        showBack: settings.arguments as bool,
+      ));
     // Admin Routes
     case AdminHomeView.routeName:
       return MaterialPageRoute(builder: (_) => const AdminHomeView());

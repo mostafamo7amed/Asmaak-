@@ -16,7 +16,8 @@ class QuestionWidget extends StatefulWidget {
     required this.answer3,
     required this.answer4,
     required this.correctAnswer,
-    this.isManage = false, this.answerChanged,
+    this.isManage = false,
+    this.answerChanged,
   });
   final String answer1;
   final String answer2;
@@ -38,8 +39,9 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         videoPlayerController: VideoPlayerController.networkUrl(
             Uri.parse(
                 'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
-            videoPlayerOptions:
-                VideoPlayerOptions(allowBackgroundPlayback: false)));
+            videoPlayerOptions: VideoPlayerOptions(
+              allowBackgroundPlayback: false,
+            )));
     super.initState();
   }
 
@@ -76,8 +78,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                 if (!widget.isManage) {
                   if (widget.answer1 == widget.correctAnswer) {
                     widget.answerChanged!(true);
-                    setState(() {
-                    });
+                    setState(() {});
                     customAnswerDialog(
                         context: context,
                         message: 'الجواب صحيح',
@@ -91,6 +92,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                         icon: AssetsData.wrongAnswer);
                   }
                 }
+                flickManager.flickControlManager?.pause();
               },
               title: widget.answer1,
               color: AppColor.lightPinkColor,
@@ -117,6 +119,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                         icon: AssetsData.wrongAnswer);
                   }
                 }
+                flickManager.flickControlManager?.pause();
               },
               title: widget.answer2,
               color: AppColor.primaryColor,
@@ -147,6 +150,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                         icon: AssetsData.wrongAnswer);
                   }
                 }
+                flickManager.flickControlManager?.pause();
               },
               title: widget.answer3,
               color: AppColor.greenColor,
@@ -173,6 +177,7 @@ class _QuestionWidgetState extends State<QuestionWidget> {
                         icon: AssetsData.wrongAnswer);
                   }
                 }
+                flickManager.flickControlManager?.pause();
               },
               title: widget.answer4,
               color: AppColor.pinkColor,

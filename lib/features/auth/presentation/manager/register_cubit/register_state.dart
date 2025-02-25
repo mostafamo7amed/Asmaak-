@@ -14,9 +14,6 @@ final class RegisterCreateUserLoading extends RegisterState {}
 final class RegisterCreateUserSuccess extends RegisterState {}
 final class RegisterCreateUserError extends RegisterState {}
 
-final class UpdateUserInfo extends RegisterState {}
-final class UpdateDiabetesType extends RegisterState {}
-final class UpdateTherapyType extends RegisterState {}
-final class UpdateGlucoseValue extends RegisterState {}
+
 
 

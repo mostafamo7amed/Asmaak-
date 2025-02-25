@@ -1,3 +1,4 @@
+import 'package:asmaak/features/home/presentation/views/my_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -5,23 +6,30 @@ import '../../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../../core/utils/app_manager/app_styles.dart';
 
-AppBar buildHomeAppBar(context, {String title = ''}) {
+AppBar buildHomeAppBar(
+  context, {
+  String title = '',
+}) {
   return AppBar(
     toolbarHeight: 70,
     shadowColor: AppColor.lightGrayColor,
     surfaceTintColor: Colors.transparent,
     backgroundColor: Colors.white,
-
     leading: Padding(
       padding: const EdgeInsets.only(right: 8.0),
-      child: CircleAvatar(
-        radius: 25,
-        child: SvgPicture.asset(
-          AssetsData.profile,
-          height: 25,
-          width: 25,
-          fit: BoxFit.scaleDown,
-          colorFilter: ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.pushNamed(context, MyProfileView.routeName, arguments: true);
+        },
+        child: CircleAvatar(
+          radius: 25,
+          child: SvgPicture.asset(
+            AssetsData.profile,
+            height: 25,
+            width: 25,
+            fit: BoxFit.scaleDown,
+            colorFilter: ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+          ),
         ),
       ),
     ),
@@ -30,23 +38,23 @@ AppBar buildHomeAppBar(context, {String title = ''}) {
     title: Column(
       children: [
         if (title != '')
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: Styles.bold19.copyWith(color: AppColor.primaryColor),
-        ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: Styles.bold19.copyWith(color: AppColor.primaryColor),
+          ),
         if (title == '')
-        Text(
-          'أَسْمَعُك',
-          textAlign: TextAlign.center,
-          style: Styles.bold19.copyWith(color: AppColor.primaryColor),
-        ),
+          Text(
+            'أَسْمَعُك',
+            textAlign: TextAlign.center,
+            style: Styles.bold19.copyWith(color: AppColor.primaryColor),
+          ),
         if (title == '')
-        Text(
-          'لغه الاشاره العربيه',
-          textAlign: TextAlign.center,
-          style: Styles.bold13.copyWith(color: AppColor.primaryColor),
-        ),
+          Text(
+            'لغه الاشاره العربيه',
+            textAlign: TextAlign.center,
+            style: Styles.bold13.copyWith(color: AppColor.primaryColor),
+          ),
       ],
     ),
     actions: [

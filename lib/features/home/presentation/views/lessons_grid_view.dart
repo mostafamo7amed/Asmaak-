@@ -6,11 +6,16 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
 
-class LessonsGridView extends StatelessWidget {
+class LessonsGridView extends StatefulWidget {
   const LessonsGridView({super.key});
 
   static const routeName = 'lessons-grid';
 
+  @override
+  State<LessonsGridView> createState() => _LessonsGridViewState();
+}
+
+class _LessonsGridViewState extends State<LessonsGridView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,42 +27,44 @@ class LessonsGridView extends StatelessWidget {
           itemCount: 2,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
-          itemBuilder: (context, index) => GestureDetector(
-            onTap: () {
-              customViewLessonDialog(
-                image: AssetsData.cate,
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                customViewLessonDialog(
+                  image: AssetsData.cate,
                   context: context, message: 'قطة',
-                  );
-            },
-            child: Card(
-              elevation: 2,
-              color: AppColor.whiteColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: SvgPicture.asset(
-                        AssetsData.cate,
+                );
+              },
+              child: Card(
+                elevation: 2,
+                color: AppColor.whiteColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: SvgPicture.asset(
+                          AssetsData.cate,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 8,
-                    ),
-                    Text(
-                      'قطة',
-                      style: Styles.bold16,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Text(
+                        'قطة',
+                        style: Styles.bold16,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ),
+            );
+          }
         ),
       ),
     );
