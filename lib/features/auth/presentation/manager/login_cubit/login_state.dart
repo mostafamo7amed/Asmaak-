@@ -23,3 +23,5 @@ final class LoginResetPasswordLoading extends LoginState {}
 final class LoginResetPasswordSuccess extends LoginState {}
 
 final class LoginResetPasswordError extends LoginState {}
+
+final class LogOutState extends LoginState {}

@@ -26,7 +26,7 @@ class ManageCategoryView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAdminAppBar(context, title: 'ادارة المحتوي', showBack: true),
+      appBar: buildAdminAppBar(context, title: 'ادارة المحتوى', showBack: true),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColor.greenColor,
         onPressed: () {

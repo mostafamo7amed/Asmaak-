@@ -1,8 +1,10 @@
 import 'package:asmaak/core/utils/app_manager/app_colors.dart';
+import 'package:asmaak/features/auth/presentation/manager/login_cubit/login_cubit.dart';
 import 'package:asmaak/features/on_boarding/presentation/views/on_boarding_1_view.dart';
 import 'package:bloc/bloc.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
@@ -28,29 +30,34 @@ Future<void> main() async {
 
 class Asmaak extends StatelessWidget {
   const Asmaak({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      locale: Locale('ar', 'SA'),
-      localizationsDelegates: [
-        S.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => LoginCubit(),
+        ),
       ],
-      supportedLocales: S.delegate.supportedLocales,
-      title: 'أَسْمَعُك',
-      theme: ThemeData(
-        scaffoldBackgroundColor: AppColor.backgroundColor,
-        fontFamily: 'Cairo',
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
-        useMaterial3: true,
+      child: GetMaterialApp(
+        locale: Locale('ar', 'SA'),
+        localizationsDelegates: [
+          S.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: S.delegate.supportedLocales,
+        title: 'أَسْمَعُك',
+        theme: ThemeData(
+          scaffoldBackgroundColor: AppColor.backgroundColor,
+          fontFamily: 'Cairo',
+          colorScheme: ColorScheme.fromSeed(seedColor: AppColor.primaryColor),
+          useMaterial3: true,
+        ),
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: onGenerateRoute,
+        initialRoute: OnBoarding1View.routeName,
       ),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: onGenerateRoute,
-      initialRoute: OnBoarding1View.routeName,
     );
   }
 }

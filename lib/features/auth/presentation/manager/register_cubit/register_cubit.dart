@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../constants.dart';
 import '../../../../../core/helper_functions/get_snack_bar.dart';
+import '../../../../../core/services/app_references.dart';
 import '../../../../auth/domain/entity/user_entity.dart';
 part 'register_state.dart';
 
@@ -26,6 +27,7 @@ class RegisterCubit extends Cubit<RegisterState> {
         password: password,
       );
       user = credential.user!;
+      AppReference.setData(key: uidKey, data: credential.user!.uid);
       emit(RegisterSuccess(user));
     } on FirebaseAuthException catch (e) {
       log('Exception: in FirebaseAuthServices.createUserWithEmailAndPassword ${e.toString()}');

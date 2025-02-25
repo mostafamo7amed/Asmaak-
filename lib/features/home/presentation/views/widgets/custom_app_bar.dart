@@ -1,3 +1,4 @@
+import 'package:asmaak/features/home/presentation/views/my_profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
@@ -6,7 +7,11 @@ import '../../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../../core/utils/app_manager/app_styles.dart';
 
-AppBar customAppBar(context,{required String title,bool showProgress=true,showBack=true,showProfile=true}) {
+AppBar customAppBar(context,
+    {required String title,
+    bool showProgress = true,
+    showBack = true,
+    showProfile = true}) {
   return AppBar(
     toolbarHeight: 70,
     shadowColor: AppColor.lightGrayColor,
@@ -19,15 +24,19 @@ AppBar customAppBar(context,{required String title,bool showProgress=true,showBa
         children: [
           Padding(
             padding: const EdgeInsets.only(right: 15.0),
-            child: CircleAvatar(
-              radius: 20,
-              child: SvgPicture.asset(
-                AssetsData.profile,
-                height: 25,
-                width: 25,
-                fit: BoxFit.scaleDown,
-                colorFilter:
-                    ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+            child: GestureDetector(
+              onTap: () => Navigator.pushNamed(context, MyProfileView.routeName,
+                  arguments: true),
+              child: CircleAvatar(
+                radius: 20,
+                child: SvgPicture.asset(
+                  AssetsData.profile,
+                  height: 25,
+                  width: 25,
+                  fit: BoxFit.scaleDown,
+                  colorFilter:
+                      ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
+                ),
               ),
             ),
           ),
@@ -77,7 +86,7 @@ AppBar customAppBar(context,{required String title,bool showProgress=true,showBa
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-        title,
+          title,
           textAlign: TextAlign.center,
           style: Styles.bold19.copyWith(color: AppColor.primaryColor),
         ),

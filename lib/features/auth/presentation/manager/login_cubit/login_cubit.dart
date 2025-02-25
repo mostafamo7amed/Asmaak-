@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:asmaak/core/services/app_references.dart';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -22,6 +23,7 @@ class LoginCubit extends Cubit<LoginState> {
         email: email,
         password: password,
       );
+      AppReference.setData(key: uidKey, data: credential.user!.uid);
       emit(LoginSuccess(credential.user!));
     } on FirebaseAuthException catch (e) {
       log('Exception: in FirebaseAuthServices.signInWithEmailAndPassword ${e.toString()}');
@@ -96,5 +98,10 @@ class LoginCubit extends Cubit<LoginState> {
         }
       }
     }
+  }
+
+  void logout() {
+    FirebaseAuth.instance.signOut();
+    emit(LogOutState());
   }
 }
