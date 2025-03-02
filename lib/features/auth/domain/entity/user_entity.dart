@@ -7,6 +7,7 @@ class UserEntity {
   final String? dateOfBirth;
   final bool? receiveNotification;
   final String? fcmToken;
+  final String? level;
 
   UserEntity({
     this.uid,
@@ -17,6 +18,7 @@ class UserEntity {
     this.dateOfBirth,
     this.receiveNotification,
     this.fcmToken,
+    this.level,
   });
 
   toMap() => {
@@ -27,7 +29,8 @@ class UserEntity {
         'image': image,
         'dateOfBirth': dateOfBirth,
         'receiveNotification': receiveNotification,
-        'fcmToken': fcmToken
+        'fcmToken': fcmToken,
+        'level': level
       };
 
   factory UserEntity.fromMap(Map<String, dynamic> map) => UserEntity(
@@ -39,5 +42,6 @@ class UserEntity {
         dateOfBirth: map['dateOfBirth'],
         receiveNotification: map['receiveNotification'],
         fcmToken: map['fcmToken'],
+        level: map['level'],
       );
 }

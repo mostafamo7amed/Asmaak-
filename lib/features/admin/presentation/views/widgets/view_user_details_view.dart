@@ -1,3 +1,4 @@
+import 'package:asmaak/features/auth/domain/entity/user_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -7,8 +8,9 @@ import '../../../../../core/utils/app_manager/app_styles.dart';
 import 'build_admin_appbar.dart';
 
 class ViewUserDetailsView extends StatelessWidget {
-  const ViewUserDetailsView({super.key});
+  const ViewUserDetailsView({super.key, required this.user});
   static const routeName = 'view-user-details';
+  final UserEntity user;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +38,7 @@ class ViewUserDetailsView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
-                  'هيفاء تركي',
+                  user.name ?? '',
                   style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
@@ -58,7 +60,7 @@ class ViewUserDetailsView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
-                  'nHn4o@example.com',
+                  user.email ?? '',
                   style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
@@ -80,7 +82,7 @@ class ViewUserDetailsView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
-                  '2015-01-01',
+                  user.dateOfBirth ?? 'لم يتم التحديث بعد',
                   style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
@@ -102,7 +104,7 @@ class ViewUserDetailsView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
-                  'أنثى',
+                  user.gender ?? 'لم يتم التحديث بعد',
                   style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
@@ -124,7 +126,7 @@ class ViewUserDetailsView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: Text(
-                  'مستوى متوسط',
+                  user.level ?? '',
                   style: Styles.bold19.copyWith(color: AppColor.grayColor),
                 ),
               ),
