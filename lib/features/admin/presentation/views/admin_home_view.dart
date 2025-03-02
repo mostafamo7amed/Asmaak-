@@ -1,11 +1,14 @@
 import 'package:asmaak/features/admin/presentation/views/manage_notification_view.dart';
 import 'package:asmaak/features/admin/presentation/views/manage_users_view.dart';
 import 'package:asmaak/features/admin/presentation/views/manage_view.dart';
+import 'package:asmaak/features/admin/presentation/views/manager/admin_cubit.dart';
 import 'package:asmaak/features/auth/presentation/view/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../constants.dart';
+import '../../../../core/services/app_references.dart';
 import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
@@ -26,10 +29,17 @@ class _UserHomeRootState extends State<AdminHomeView> {
   int mCounter = 0;
 
   @override
+  void initState() {
+    context.read<AdminCubit>().getCategories();
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if(state is LogOutState){
+          AppReference.removeData(key: authKey);
+          AppReference.removeData(key: uidKey);
           Navigator.pushReplacementNamed(context, LoginView.routeName);
         }
       },

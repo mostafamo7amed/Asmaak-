@@ -1,3 +1,5 @@
+import 'package:asmaak/constants.dart';
+import 'package:asmaak/core/services/app_references.dart';
 import 'package:asmaak/core/utils/app_manager/app_assets.dart';
 import 'package:asmaak/core/utils/app_manager/app_colors.dart';
 import 'package:asmaak/features/auth/presentation/view/login_view.dart';
@@ -25,6 +27,8 @@ class MyProfileView extends StatelessWidget {
     return BlocConsumer<LoginCubit, LoginState>(
       listener: (context, state) {
         if (state is LogOutState) {
+          AppReference.removeData(key: authKey);
+          AppReference.removeData(key: uidKey);
           Navigator.pushReplacementNamed(context, LoginView.routeName);
         }
       },

@@ -18,6 +18,8 @@ class QuestionWidget extends StatefulWidget {
     required this.correctAnswer,
     this.isManage = false,
     this.answerChanged,
+    this.videoUrl =
+        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
   });
   final String answer1;
   final String answer2;
@@ -25,6 +27,7 @@ class QuestionWidget extends StatefulWidget {
   final String answer4;
   final String correctAnswer;
   final bool isManage;
+  final String videoUrl;
   final ValueChanged<bool>? answerChanged;
 
   @override
@@ -36,12 +39,11 @@ class _QuestionWidgetState extends State<QuestionWidget> {
   @override
   void initState() {
     flickManager = FlickManager(
-        videoPlayerController: VideoPlayerController.networkUrl(
-            Uri.parse(
-                'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4'),
-            videoPlayerOptions: VideoPlayerOptions(
-              allowBackgroundPlayback: false,
-            )));
+        videoPlayerController:
+            VideoPlayerController.networkUrl(Uri.parse(widget.videoUrl),
+                videoPlayerOptions: VideoPlayerOptions(
+                  allowBackgroundPlayback: false,
+                )));
     super.initState();
   }
 
@@ -58,11 +60,12 @@ class _QuestionWidgetState extends State<QuestionWidget> {
         FittedBox(
           fit: BoxFit.scaleDown,
           child: SizedBox(
-            height: 150,
-            width: MediaQuery.of(context).size.width * .5,
+            height: 180,
+            width: MediaQuery.of(context).size.width * .8,
             child: FlickVideoPlayer(
               flickManager: flickManager,
               flickVideoWithControls: FlickVideoWithControls(
+                videoFit: BoxFit.contain,
                 controls: CustomFlickControls(),
               ),
             ),

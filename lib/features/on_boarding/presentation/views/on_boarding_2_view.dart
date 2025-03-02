@@ -40,7 +40,9 @@ class OnBoarding2View extends StatelessWidget {
                   style:
                       Styles.bold19.copyWith(color: AppColor.lightGreenColor),
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 Text(
                   'تعلم معنا لغة الإشارة في أبسط صورها، سجل دخولك معنا واستمتع.',
                   textAlign: TextAlign.center,

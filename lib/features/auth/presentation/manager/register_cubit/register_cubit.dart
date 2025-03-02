@@ -67,6 +67,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       dateOfBirth: dateOfBirth,
       receiveNotification: true,
       fcmToken: '',
+      level: 'مستوي مبتدئ',
     );
     await FirebaseFirestore.instance
         .collection(userCollection)

@@ -12,12 +12,12 @@ class CategoryView extends StatelessWidget {
   final int length = 20;
   final List<CategoryEntity> categories = [
     CategoryEntity(
-      id: 1,
+      id: '1',
       name: 'الحيوانات',
       image: AssetsData.cate,
     ),
     CategoryEntity(
-      id: 2,
+      id: '2',
       name: 'الطعام',
       image: AssetsData.foods,
     )

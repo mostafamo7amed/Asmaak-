@@ -37,6 +37,12 @@ class CustomAnswerWidget extends StatelessWidget {
             noBorder: true,
             hintText: hintText,
             onSaved: onSaved,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'الرجاء ادخال الجواب';
+              }
+              return null;
+            },
           ),
         ),
       ],

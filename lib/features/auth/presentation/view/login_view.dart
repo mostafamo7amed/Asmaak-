@@ -9,7 +9,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../constants.dart';
 import '../../../../core/helper_functions/auth_linear_gradient.dart';
+import '../../../../core/services/app_references.dart';
 import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
@@ -37,6 +39,8 @@ class _LoginViewState extends State<LoginView> {
       listener: (context, state) {
         if (state is LoginSuccess) {
           context.read<LoginCubit>().findUser(state.user.uid, context);
+          AppReference.sharedPreferences.setString(uidKey, state.user.uid);
+          AppReference.sharedPreferences.setBool(authKey, true);
           formKey.currentState!.reset();
         }
       },

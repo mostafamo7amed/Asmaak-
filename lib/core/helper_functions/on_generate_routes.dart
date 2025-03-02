@@ -11,6 +11,7 @@ import 'package:asmaak/features/home/presentation/views/user_home_root.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/admin/presentation/views/admin_home_view.dart';
+import '../../features/auth/domain/entity/user_entity.dart';
 import '../../features/auth/presentation/view/forget_password.dart';
 import '../../features/auth/presentation/view/login_view.dart';
 import '../../features/auth/presentation/view/register_view.dart';
@@ -60,9 +61,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case ManageQuizView.routeName:
       return MaterialPageRoute(builder: (_) => const ManageQuizView());
     case AddQuizView.routeName:
-      return MaterialPageRoute(builder: (_) => const AddQuizView());
+      return MaterialPageRoute(builder: (_) =>  AddQuizView(selectedCategory: settings.arguments as String,));
     case ViewUserDetailsView.routeName:
-      return MaterialPageRoute(builder: (_) => const ViewUserDetailsView());
+      return MaterialPageRoute(builder: (_) => ViewUserDetailsView( user:  settings.arguments as UserEntity,));
     default:
       return MaterialPageRoute(builder: (_) => const Scaffold());
   }

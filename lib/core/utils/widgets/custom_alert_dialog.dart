@@ -33,7 +33,7 @@ Future customAlertDialog({
                   child: Padding(
                     padding: const EdgeInsets.all(10.0),
                     child:Icon(
-                      Icons.delete,
+                      Icons.warning,
                       color: AppColor.pinkColor,
                       size: 30,),
                   ),
