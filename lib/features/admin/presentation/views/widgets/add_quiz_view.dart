@@ -103,7 +103,7 @@ class _AddQuizViewState extends State<AddQuizView> {
                               Text(
                                 video1 != null
                                     ? video1!.path.split('/').last
-                                    : 'اضافة فديو',
+                                    : 'اضافة فيديو',
                                 style: Styles.regular16
                                     .copyWith(color: AppColor.lightGrayColor),
                                 overflow: TextOverflow.ellipsis,
@@ -200,7 +200,7 @@ class _AddQuizViewState extends State<AddQuizView> {
                               Text(
                                 video2 != null
                                     ? video2!.path.split('/').last
-                                    : 'اضافة فديو',
+                                    : 'اضافة فيديو',
                                 style: Styles.regular16
                                     .copyWith(color: AppColor.lightGrayColor),
                                 overflow: TextOverflow.ellipsis,
@@ -297,7 +297,7 @@ class _AddQuizViewState extends State<AddQuizView> {
                               Text(
                                 video3 != null
                                     ? video3!.path.split('/').last
-                                    : 'اضافة فديو',
+                                    : 'اضافة فيديو',
                                 style: Styles.regular16
                                     .copyWith(color: AppColor.lightGrayColor),
                                 overflow: TextOverflow.ellipsis,
@@ -395,7 +395,7 @@ class _AddQuizViewState extends State<AddQuizView> {
                                 video4 != null
                                     ? video4!.path.split('/').last
                                     :
-                                'اضافة فديو',
+                                'اضافة فيديو',
                                 style: Styles.regular16
                                     .copyWith(color: AppColor.lightGrayColor),
                                 overflow: TextOverflow.ellipsis,

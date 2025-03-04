@@ -61,16 +61,21 @@ class _ManageCategoryViewState extends State<ManageCategoryView> {
                 style: Styles.bold16.copyWith(color: AppColor.whiteColor),
               ),
             ),
-            body: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: context.read<AdminCubit>().categories.length,
-              itemBuilder: (context, index) {
-                return AdminCategoryItem(
-                  index: index,
-                  categoryEntity: context.read<AdminCubit>().categories[index],
-                );
-              },
-            ),
+            body: context.read<AdminCubit>().categories.isEmpty
+                ? const Center(
+                    child: Text('لا يوجد محتوى'),
+                  )
+                : ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: context.read<AdminCubit>().categories.length,
+                    itemBuilder: (context, index) {
+                      return AdminCategoryItem(
+                        index: index,
+                        categoryEntity:
+                            context.read<AdminCubit>().categories[index],
+                      );
+                    },
+                  ),
           ),
         );
       },

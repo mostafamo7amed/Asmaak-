@@ -28,8 +28,10 @@ class _ManageLessonViewState extends State<ManageLessonView> {
   @override
   void initState() {
     categories = AdminCubit.get(context).categories;
-    selectedCategory = categories.first.id;
-    context.read<AdminCubit>().getLessons(selectedCategory!);
+    if (categories.isNotEmpty) {
+      selectedCategory = categories.first.id;
+      context.read<AdminCubit>().getLessons(selectedCategory!);
+    }
     super.initState();
   }
 
