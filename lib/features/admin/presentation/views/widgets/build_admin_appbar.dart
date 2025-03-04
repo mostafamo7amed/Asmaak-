@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
-import '../../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../../core/utils/app_manager/app_styles.dart';
 
@@ -11,20 +8,8 @@ AppBar buildAdminAppBar(context, {String title = '', bool showBack = false}) {
     shadowColor: AppColor.lightGrayColor,
     surfaceTintColor: Colors.transparent,
     backgroundColor: Colors.white,
-    leading: Padding(
-      padding: const EdgeInsets.only(right: 15.0),
-      child: CircleAvatar(
-        radius: 20,
-        child: SvgPicture.asset(
-          AssetsData.profile,
-          height: 20,
-          width: 20,
-          fit: BoxFit.scaleDown,
-          colorFilter: ColorFilter.mode(AppColor.whiteColor, BlendMode.srcIn),
-        ),
-      ),
-    ),
     centerTitle: true,
+    leading: SizedBox(),
     titleSpacing: 0,
     title: Text(
       title,

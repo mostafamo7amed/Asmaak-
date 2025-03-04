@@ -31,8 +31,10 @@ class _ManageQuizViewState extends State<ManageQuizView> {
   @override
   void initState() {
     categories = AdminCubit.get(context).categories;
-    selectedCategory = categories.first.id;
-    AdminCubit.get(context).getQuiz(categoryId: selectedCategory!);
+    if(categories.isNotEmpty){
+      selectedCategory = categories.first.id;
+      AdminCubit.get(context).getQuiz(categoryId: selectedCategory!);
+    }
     super.initState();
   }
 

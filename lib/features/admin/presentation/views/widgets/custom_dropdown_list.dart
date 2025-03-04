@@ -22,7 +22,10 @@ class _CustomGenderWidgetState extends State<CustomDropdownList> {
 
   @override
   Widget build(BuildContext context) {
-    selectedItem = widget.list[0];
+    if( widget.list.isNotEmpty){
+      selectedItem = widget.list[0];
+    }
+
     return DropdownButtonFormField2<String>(
       value: selectedItem,
       decoration: InputDecoration(
