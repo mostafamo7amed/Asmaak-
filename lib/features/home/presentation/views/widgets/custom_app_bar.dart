@@ -1,5 +1,7 @@
+import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/home/presentation/views/my_profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:linear_progress_bar/linear_progress_bar.dart';
 
@@ -7,11 +9,15 @@ import '../../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../../core/utils/app_manager/app_styles.dart';
 
-AppBar customAppBar(context,
-    {required String title,
-    bool showProgress = true,
-    showBack = true,
-    showProfile = true}) {
+AppBar customAppBar(
+  context, {
+  required String title,
+  bool showProgress = true,
+  showBack = true,
+  showProfile = true,
+  currentProgress = 1,
+  totalProgress = 50,
+}) {
   return AppBar(
     toolbarHeight: 70,
     shadowColor: AppColor.lightGrayColor,
@@ -42,39 +48,49 @@ AppBar customAppBar(context,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text(
-                    '10',
-                    style: Styles.bold13.copyWith(color: AppColor.primaryColor),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Image.asset(
-                    AssetsData.coins,
-                    fit: BoxFit.scaleDown,
-                  ),
-                ]),
-                const SizedBox(
-                  height: 2,
-                ),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text(
-                    '5',
-                    style: Styles.bold13.copyWith(color: AppColor.primaryColor),
-                  ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  Image.asset(
-                    AssetsData.diamond,
-                    fit: BoxFit.scaleDown,
-                  ),
-                ])
-              ],
+            child: BlocBuilder<UserCubit, UserState>(
+              builder: (context, state) {
+                var cubit = UserCubit.get(context);
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Text(
+                        cubit.levelEntity != null
+                            ? cubit.levelEntity!.coins.toString()
+                            : '0',
+                        style: Styles.bold13
+                            .copyWith(color: AppColor.primaryColor),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Image.asset(
+                        AssetsData.coins,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ]),
+                    const SizedBox(
+                      height: 2,
+                    ),
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      Text(
+                        cubit.levelEntity != null
+                            ? cubit.levelEntity!.diamonds.toString(): '0',
+                        style: Styles.bold13
+                            .copyWith(color: AppColor.primaryColor),
+                      ),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Image.asset(
+                        AssetsData.diamond,
+                        fit: BoxFit.scaleDown,
+                      ),
+                    ])
+                  ],
+                );
+              },
             ),
           )
         ],
@@ -98,10 +114,10 @@ AppBar customAppBar(context,
           child: SizedBox(
             width: MediaQuery.of(context).size.width / 2.7,
             child: LinearProgressBar(
-              maxSteps: 4,
+              maxSteps: totalProgress,
               progressType:
                   LinearProgressBar.progressTypeLinear, // Use Linear progress
-              currentStep: 1,
+              currentStep: currentProgress,
               progressColor: AppColor.orangeTextColor,
               backgroundColor: AppColor.checkBoxColor,
               minHeight: 8,

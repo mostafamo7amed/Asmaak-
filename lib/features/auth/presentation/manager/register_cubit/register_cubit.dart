@@ -7,6 +7,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/helper_functions/get_snack_bar.dart';
 import '../../../../../core/services/app_references.dart';
 import '../../../../auth/domain/entity/user_entity.dart';
+import '../../../../home/domain/entity/level_entity.dart';
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
@@ -21,8 +22,8 @@ class RegisterCubit extends Cubit<RegisterState> {
   }) async {
     emit(RegisterLoading());
     try {
-      final credential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -73,7 +74,27 @@ class RegisterCubit extends Cubit<RegisterState> {
         .collection(userCollection)
         .doc(user.uid)
         .set(userEntity.toMap())
-        .then((value) => emit(RegisterCreateUserSuccess()))
-        .onError((error, stackTrace) => emit(RegisterCreateUserError()));
+        .then((value) {
+      updateLevelAndCoins(user.uid);
+      emit(RegisterCreateUserSuccess());
+    }).onError((error, stackTrace) {
+      emit(RegisterCreateUserSuccess());
+    });
+  }
+
+  updateLevelAndCoins(String uid) {
+    emit(UpdateLevelAndCoinsLoadingState());
+    LevelEntity levelEntity =
+        LevelEntity(level: 'مستوي مبتدئ', coins: 0, diamonds: 0);
+    FirebaseFirestore.instance
+        .collection(userProgressCollection)
+        .doc(uid)
+        .set(levelEntity.toJson())
+        .then(
+          (value) => emit(UpdateLevelAndCoinsSuccessState()),
+        )
+        .onError(
+          (error, stackTrace) => emit(UpdateLevelAndCoinsErrorState()),
+        );
   }
 }

@@ -8,7 +8,7 @@ getSnackBar(String message) {
     messageText: Text(
       message,
       style: Styles.regular16.copyWith(color: AppColor.whiteColor),),
-    duration: const Duration(seconds: 2),
+    duration: const Duration(seconds: 4),
     animationDuration: const Duration(milliseconds: 300),
     reverseAnimationCurve: Curves.easeOutBack,
     snackStyle: SnackStyle.FLOATING,

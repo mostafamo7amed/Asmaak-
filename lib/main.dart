@@ -1,6 +1,7 @@
 import 'package:asmaak/core/utils/app_manager/app_colors.dart';
 import 'package:asmaak/features/admin/presentation/views/manager/admin_cubit.dart';
 import 'package:asmaak/features/auth/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/on_boarding/presentation/views/on_boarding_1_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
+import 'constants.dart';
 import 'core/helper_functions/on_generate_routes.dart';
 import 'core/services/app_references.dart';
 import 'core/services/custom_bloc_observer.dart';
@@ -36,6 +38,7 @@ class Asmaak extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => AdminCubit()),
+        BlocProvider(create: (context) => UserCubit()..getUser(AppReference.getData(key: uidKey)),)
       ],
       child: GetMaterialApp(
         locale: Locale('ar', 'SA'),

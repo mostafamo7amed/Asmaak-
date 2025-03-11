@@ -14,6 +14,10 @@ final class RegisterCreateUserLoading extends RegisterState {}
 final class RegisterCreateUserSuccess extends RegisterState {}
 final class RegisterCreateUserError extends RegisterState {}
 
+final class UpdateLevelAndCoinsLoadingState extends RegisterState {}
+final class UpdateLevelAndCoinsSuccessState extends RegisterState {}
+final class UpdateLevelAndCoinsErrorState extends RegisterState {}
+
 
 
 

@@ -36,7 +36,9 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case UserHomeRoot.routeName:
       return MaterialPageRoute(builder: (_) => const UserHomeRoot());
     case LessonsGridView.routeName:
-      return MaterialPageRoute(builder: (_) => const LessonsGridView());
+      return MaterialPageRoute(builder: (_) => LessonsGridView(
+        categoryId: settings.arguments as String,
+      ));
     case PrivacyView.routeName:
       return MaterialPageRoute(builder: (_) => const PrivacyView());
     case EditProfileView.routeName:
@@ -44,7 +46,7 @@ Route<dynamic> onGenerateRoute(RouteSettings settings) {
     case NotificationView.routeName:
       return MaterialPageRoute(builder: (_) => const NotificationView());
     case QuizView.routeName:
-      return MaterialPageRoute(builder: (_) => const QuizView());
+      return MaterialPageRoute(builder: (_) => QuizView(categoryId: settings.arguments as String,));
     case MyPointsView.routeName:
       return MaterialPageRoute(builder: (_) => const MyPointsView());
     case MyProfileView.routeName:
