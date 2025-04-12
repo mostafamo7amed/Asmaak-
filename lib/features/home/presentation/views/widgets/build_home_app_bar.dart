@@ -1,5 +1,7 @@
+import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/home/presentation/views/my_profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/app_manager/app_assets.dart';
@@ -19,7 +21,8 @@ AppBar buildHomeAppBar(
       padding: const EdgeInsets.only(right: 8.0),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, MyProfileView.routeName, arguments: true);
+          Navigator.pushNamed(context, MyProfileView.routeName,
+              arguments: true);
         },
         child: CircleAvatar(
           radius: 25,
@@ -60,39 +63,48 @@ AppBar buildHomeAppBar(
     actions: [
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text(
-                '10',
-                style: Styles.bold13.copyWith(color: AppColor.primaryColor),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Image.asset(
-                AssetsData.coins,
-                fit: BoxFit.scaleDown,
-              ),
-            ]),
-            const SizedBox(
-              height: 2,
-            ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text(
-                '5',
-                style: Styles.bold13.copyWith(color: AppColor.primaryColor),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              Image.asset(
-                AssetsData.diamond,
-                fit: BoxFit.scaleDown,
-              ),
-            ])
-          ],
+        child: BlocBuilder<UserCubit, UserState>(
+          builder: (context, state) {
+            var cubit = UserCubit.get(context);
+            return Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text(
+                    cubit.levelEntity != null
+                        ? cubit.levelEntity!.coins.toString()
+                        : '0',
+                    style: Styles.bold13.copyWith(color: AppColor.primaryColor),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Image.asset(
+                    AssetsData.coins,
+                    fit: BoxFit.scaleDown,
+                  ),
+                ]),
+                const SizedBox(
+                  height: 2,
+                ),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text(
+                    cubit.levelEntity != null
+                        ? cubit.levelEntity!.diamonds.toString()
+                        : '0',
+                    style: Styles.bold13.copyWith(color: AppColor.primaryColor),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Image.asset(
+                    AssetsData.diamond,
+                    fit: BoxFit.scaleDown,
+                  ),
+                ])
+              ],
+            );
+          },
         ),
       )
     ],

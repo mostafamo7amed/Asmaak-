@@ -1,45 +1,72 @@
+
+import 'package:asmaak/core/services/app_references.dart';
+import 'package:asmaak/core/utils/widgets/custom_progress_hud.dart';
+import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/home/presentation/views/lessons_grid_view.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/build_home_app_bar.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/user_category_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/utils/app_manager/app_assets.dart';
-import '../../../admin/domain/entity/category_entity.dart';
+import '../../../../constants.dart';
 
-class CategoryView extends StatelessWidget {
-  CategoryView({super.key});
+class CategoryView extends StatefulWidget {
+  const CategoryView({super.key});
 
-  final int length = 20;
-  final List<CategoryEntity> categories = [
-    CategoryEntity(
-      id: '1',
-      name: 'الحيوانات',
-      image: AssetsData.cate,
-    ),
-    CategoryEntity(
-      id: '2',
-      name: 'الطعام',
-      image: AssetsData.foods,
-    )
-  ];
+  @override
+  State<CategoryView> createState() => _CategoryViewState();
+}
+
+class _CategoryViewState extends State<CategoryView> {
+  @override
+  void initState() {
+    UserCubit.get(context).getUser(AppReference.getData(key: uidKey));
+    UserCubit.get(context).getUserLevel();
+    UserCubit.get(context).getAllCategories();
+    UserCubit.get(context).getTotalLearnedLessons();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildHomeAppBar(
-        context,
-      ),
-      body: ListView.builder(
-        physics: const BouncingScrollPhysics(),
-        itemCount: categories.length,
-        itemBuilder: (context, index) {
-          return GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, LessonsGridView.routeName);
-            },
-            child: UserCategoryItem( category: categories[index], index: index,),
-          );
-        },
-      ),
+    return BlocConsumer<UserCubit, UserState>(
+      listener: (context, state) {
+        if (state is GetUserLevelSuccessState) {}
+      },
+      builder: (context, state) {
+        var cubit = UserCubit.get(context);
+        return CustomProgressHud(
+          isLoading: state is UserGetCategoriesLoadingState ||
+              state is GetUserLevelLoadingState ||
+              state is GetUserLoadingState,
+          child: Scaffold(
+            appBar: buildHomeAppBar(
+              context,
+            ),
+            body: cubit.categories.isEmpty
+                ? const Center(
+                    child: Text('لا يوجد محتوى متاح حاليا'),
+                  )
+                : ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: cubit.categories.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, LessonsGridView.routeName,
+                              arguments: cubit.categories[index].id);
+                        },
+                        child: UserCategoryItem(
+                          category: cubit.categories[index],
+                          index: index,
+                        ),
+                      );
+                    },
+                  ),
+          ),
+        );
+      },
     );
   }
 }

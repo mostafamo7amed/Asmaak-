@@ -1,4 +1,5 @@
 import 'package:asmaak/core/utils/widgets/custom_button.dart';
+import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/home/presentation/views/user_home_root.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,7 +8,8 @@ import '../../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../../core/utils/app_manager/app_styles.dart';
 
-Future customResultDialog({context, message,score}) => showDialog(
+Future customResultDialog({context, message, score, coins, diamonds, result}) =>
+    showDialog(
       barrierDismissible: false,
       context: context,
       builder: (context) {
@@ -48,7 +50,11 @@ Future customResultDialog({context, message,score}) => showDialog(
                       const SizedBox(
                         height: 20,
                       ),
-                      Text('٤/$score',style: Styles.bold23.copyWith(color: AppColor.primaryColor),),
+                      Text(
+                        '٤/$score',
+                        style: Styles.bold23
+                            .copyWith(color: AppColor.primaryColor),
+                      ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -83,7 +89,7 @@ Future customResultDialog({context, message,score}) => showDialog(
                               Row(
                                 children: [
                                   Text(
-                                    '2',
+                                    diamonds,
                                     style: Styles.bold16,
                                   ),
                                   const SizedBox(
@@ -93,10 +99,11 @@ Future customResultDialog({context, message,score}) => showDialog(
                                 ],
                               ),
                               Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   Text(
-                                    '5',
+                                    coins,
                                     style: Styles.bold16,
                                   ),
                                   const SizedBox(
@@ -116,8 +123,12 @@ Future customResultDialog({context, message,score}) => showDialog(
                         height: 40,
                         text: 'حسناً',
                         onPressed: () {
-                          Navigator.pushReplacementNamed(context, UserHomeRoot.routeName);
-                      },),
+                          UserCubit.get(context)
+                              .saveQuizScore(score: score, result: result);
+                          Navigator.pushReplacementNamed(
+                              context, UserHomeRoot.routeName);
+                        },
+                      ),
                       const SizedBox(
                         height: 10,
                       ),
@@ -141,17 +152,17 @@ Future customResultDialog({context, message,score}) => showDialog(
                             fit: BoxFit.scaleDown,
                           ),
                           Positioned(
-                              bottom: 0,
-                              child: SizedBox(
-                                width: MediaQuery.of(context).size.width * .8,
-                                height: MediaQuery.of(context).size.height * .1,
-                                child: Text(
-                                  message,
-                                  textAlign: TextAlign.center,
-                                  style: Styles.bold19
-                                      .copyWith(color: AppColor.whiteColor),
-                                ),
+                            bottom: 0,
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width * .8,
+                              height: MediaQuery.of(context).size.height * .1,
+                              child: Text(
+                                message,
+                                textAlign: TextAlign.center,
+                                style: Styles.bold19
+                                    .copyWith(color: AppColor.whiteColor),
                               ),
+                            ),
                           ),
                         ],
                       ),

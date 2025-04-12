@@ -1,6 +1,7 @@
 import 'package:asmaak/core/utils/app_manager/app_colors.dart';
 import 'package:asmaak/features/admin/presentation/views/manager/admin_cubit.dart';
 import 'package:asmaak/features/auth/presentation/manager/login_cubit/login_cubit.dart';
+import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/on_boarding/presentation/views/on_boarding_1_view.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +37,7 @@ class Asmaak extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => AdminCubit()),
+        BlocProvider(create: (context) => UserCubit(),)
       ],
       child: GetMaterialApp(
         locale: Locale('ar', 'SA'),

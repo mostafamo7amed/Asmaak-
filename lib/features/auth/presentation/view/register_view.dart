@@ -49,13 +49,13 @@ class _RegisterViewState extends State<RegisterView> {
                   dateOfBirth: '',
                   userUid: state.user.uid,
                 );
-            AppReference.sharedPreferences.setString(uidKey, state.user.uid);
+            AppReference.setData(key: uidKey, data: state.user.uid);
           } else if (state is RegisterError) {
             getSnackBar('حدث خطأ ما من فضلك حاول مرة اخرى');
           }
           if (state is RegisterCreateUserSuccess) {
             getSnackBar('تم التسجيل بنجاح');
-            AppReference.sharedPreferences.setBool(authKey, true);
+            AppReference.setData(key: authKey, data: true);
             formKey.currentState!.reset();
             Navigator.pushReplacementNamed(context, UserHomeRoot.routeName);
           }

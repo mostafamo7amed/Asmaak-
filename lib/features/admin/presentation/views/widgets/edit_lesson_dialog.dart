@@ -142,6 +142,7 @@ Future<dynamic> editLessonDialog(
                             textColor: AppColor.whiteColor,
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
+                                formKey.currentState!.save();
                                 AdminCubit.get(context).eitLesson(
                                   name: titleController.text,
                                   categoryId: categoryId,

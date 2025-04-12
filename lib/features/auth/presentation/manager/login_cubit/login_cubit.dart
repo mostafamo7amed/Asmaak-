@@ -102,6 +102,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   void logout() {
     FirebaseAuth.instance.signOut();
+    AppReference.removeData(key: uidKey);
     emit(LogOutState());
   }
 }

@@ -39,8 +39,8 @@ class _LoginViewState extends State<LoginView> {
       listener: (context, state) {
         if (state is LoginSuccess) {
           context.read<LoginCubit>().findUser(state.user.uid, context);
-          AppReference.sharedPreferences.setString(uidKey, state.user.uid);
-          AppReference.sharedPreferences.setBool(authKey, true);
+          AppReference.setData(key: uidKey,data:  state.user.uid);
+          AppReference.setData(key: authKey, data: true);
           formKey.currentState!.reset();
         }
       },

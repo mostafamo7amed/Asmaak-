@@ -26,6 +26,8 @@ const String categoryCollection = 'category';
 const String lessonCollection = 'lessons';
 const String quizCollection = 'quiz';
 const String notificationCollection = 'notification';
+const String userProgressCollection = 'progress';
+const String quizResultCollection = 'quiz score';
 
 const String authKey = 'authKey';
 const String uidKey = 'uidKey';
