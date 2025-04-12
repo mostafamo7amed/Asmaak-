@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-import 'constants.dart';
 import 'core/helper_functions/on_generate_routes.dart';
 import 'core/services/app_references.dart';
 import 'core/services/custom_bloc_observer.dart';
@@ -38,7 +37,7 @@ class Asmaak extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => LoginCubit()),
         BlocProvider(create: (context) => AdminCubit()),
-        BlocProvider(create: (context) => UserCubit()..getUser(AppReference.getData(key: uidKey)),)
+        BlocProvider(create: (context) => UserCubit(),)
       ],
       child: GetMaterialApp(
         locale: Locale('ar', 'SA'),

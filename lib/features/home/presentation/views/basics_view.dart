@@ -1,10 +1,13 @@
 import 'package:asmaak/constants.dart';
 import 'package:asmaak/core/services/app_references.dart';
 import 'package:asmaak/features/home/domain/entity/lesson_entity.dart';
+import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/build_home_app_bar.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/custom_basics_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/helper_functions/isLessonLearned.dart';
 import '../../../../core/utils/app_manager/app_assets.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
@@ -189,10 +192,12 @@ class _BasicsViewState extends State<BasicsView> {
   ];
   List<String> items = List.generate(28, (index) => "Item ${index + 1}");
   Set<String> cachedItems = {};
+
   @override
   void initState() {
     super.initState();
-    loadCachedItems();
+    UserCubit.get(context).getCategoryProgress('basics');
+    //loadCachedItems();
   }
 
   Future<void> loadCachedItems() async {
@@ -211,64 +216,77 @@ class _BasicsViewState extends State<BasicsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: buildHomeAppBar(
-        context,
-        title: 'الأحرف',
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15.0),
-        child: GridView.builder(
-          physics: BouncingScrollPhysics(),
-          itemCount: characters.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
-          itemBuilder: (context, index) {
-            final item = items[index];
-            final isTapped = cachedItems.contains(item);
-            return GestureDetector(
-              onTap: () {
-                customBasicsDialog(
-                    context: context,
-                    message: characters[index].title,
-                    image: characters[index].coverImage,
-                    onConfirm: () {
-                      handleTap(item);
-                      Navigator.pop(context);
-                    });
-              },
-              child: Card(
-                elevation: 2,
-                color: isTapped ? AppColor.wightPinkColor : AppColor.whiteColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Image.asset(
-                          characters[index].video,
-                        ),
+    return BlocConsumer<UserCubit, UserState>(
+      listener: (context, state) {
+        if (state is MarkAsDoneSuccessState) {
+          UserCubit.get(context).getCategoryProgress('basics');
+        }
+      },
+      builder: (context, state) {
+        var cubit = UserCubit.get(context);
+        return Scaffold(
+          appBar: buildHomeAppBar(
+            context,
+            title: 'الأحرف',
+          ),
+          body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: GridView.builder(
+              physics: BouncingScrollPhysics(),
+              itemCount: characters.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2, crossAxisSpacing: 8, mainAxisSpacing: 8),
+              itemBuilder: (context, index) {
+                final isTapped = isLessonLearned(
+                    characters[index].id, cubit.categoryProgress);
+                return GestureDetector(
+                  onTap: () {
+                    customBasicsDialog(
+                        context: context,
+                        message: characters[index].title,
+                        image: characters[index].coverImage,
+                        onConfirm: () {
+                          //handleTap(item);
+                          cubit.markAsLearned(characters[index].id, 'basics');
+                          Navigator.pop(context);
+                        });
+                  },
+                  child: Card(
+                    elevation: 2,
+                    color: isTapped
+                        ? AppColor.wightPinkColor
+                        : AppColor.whiteColor,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          Expanded(
+                            child: Image.asset(
+                              characters[index].video,
+                            ),
+                          ),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          Text(
+                            characters[index].title,
+                            style: Styles.bold16,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        height: 8,
-                      ),
-                      Text(
-                        characters[index].title,
-                        style: Styles.bold16,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            );
-          },
-        ),
-      ),
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 }

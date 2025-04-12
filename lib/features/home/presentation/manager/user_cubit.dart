@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:asmaak/core/services/app_references.dart';
@@ -84,6 +83,7 @@ class UserCubit extends Cubit<UserState> {
 
   List<LessonEntity> lessons = [];
   getAllLessons(String categoryId) {
+    lessons = [];
     emit(UserGetLessonsLoadingState());
     FirebaseFirestore.instance
         .collection(categoryCollection)
@@ -107,7 +107,7 @@ class UserCubit extends Cubit<UserState> {
     );
     FirebaseFirestore.instance
         .collection(userProgressCollection)
-        .doc(userEntity!.uid)
+        .doc(AppReference.getData(key: uidKey))
         .collection(categoryCollection)
         .doc(categoryId)
         .set({
@@ -115,7 +115,7 @@ class UserCubit extends Cubit<UserState> {
     });
     FirebaseFirestore.instance
         .collection(userProgressCollection)
-        .doc(userEntity!.uid)
+        .doc(AppReference.getData(key: uidKey))
         .collection(categoryCollection)
         .doc(categoryId)
         .collection(lessonCollection)
@@ -135,7 +135,7 @@ class UserCubit extends Cubit<UserState> {
     categoryProgress = [];
     FirebaseFirestore.instance
         .collection(userProgressCollection)
-        .doc(userEntity!.uid)
+        .doc(AppReference.getData(key: uidKey))
         .collection(categoryCollection)
         .doc(categoryId)
         .collection(lessonCollection)
@@ -155,7 +155,7 @@ class UserCubit extends Cubit<UserState> {
         LevelEntity(level: level, coins: coins, diamonds: diamonds);
     FirebaseFirestore.instance
         .collection(userProgressCollection)
-        .doc(userEntity!.uid)
+        .doc(AppReference.getData(key: uidKey))
         .set(levelEntity.toJson())
         .then(
           (value) => emit(UpdateLevelAndCoinsSuccessState()),
@@ -187,7 +187,7 @@ class UserCubit extends Cubit<UserState> {
     try {
       FirebaseFirestore.instance
           .collection('progress')
-          .doc(userEntity!.uid)
+          .doc(AppReference.getData(key: uidKey))
           .collection('category')
           .get()
           .then((value) async {
@@ -239,7 +239,7 @@ class UserCubit extends Cubit<UserState> {
     if (photoUrl != null) {
       FirebaseFirestore.instance
           .collection(userCollection)
-          .doc(userEntity!.uid)
+          .doc(AppReference.getData(key: uidKey))
           .update({"image": photoUrl})
           .then((value) => emit(UpdateUserPhotoSuccessState()))
           .onError((error, stackTrace) => emit(UpdateUserPhotoErrorState()));
@@ -320,7 +320,7 @@ class UserCubit extends Cubit<UserState> {
     );
     await FirebaseFirestore.instance
         .collection(userProgressCollection)
-        .doc(userEntity!.uid)
+        .doc(AppReference.getData(key: uidKey))
         .collection(quizResultCollection)
         .doc(id.toString())
         .set(quizHistory.toMap())
@@ -336,7 +336,7 @@ class UserCubit extends Cubit<UserState> {
     emit(GetQuizHistoryLoadingState());
     await FirebaseFirestore.instance
         .collection(userProgressCollection)
-        .doc(userEntity!.uid)
+        .doc(AppReference.getData(key: uidKey))
         .collection(quizResultCollection)
         .get()
         .then((value) {

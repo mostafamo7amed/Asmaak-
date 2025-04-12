@@ -1,5 +1,5 @@
-import 'dart:developer';
 
+import 'package:asmaak/core/services/app_references.dart';
 import 'package:asmaak/core/utils/widgets/custom_progress_hud.dart';
 import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/home/presentation/views/lessons_grid_view.dart';
@@ -7,6 +7,8 @@ import 'package:asmaak/features/home/presentation/views/widgets/build_home_app_b
 import 'package:asmaak/features/home/presentation/views/widgets/user_category_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../constants.dart';
 
 class CategoryView extends StatefulWidget {
   const CategoryView({super.key});
@@ -18,6 +20,7 @@ class CategoryView extends StatefulWidget {
 class _CategoryViewState extends State<CategoryView> {
   @override
   void initState() {
+    UserCubit.get(context).getUser(AppReference.getData(key: uidKey));
     UserCubit.get(context).getUserLevel();
     UserCubit.get(context).getAllCategories();
     UserCubit.get(context).getTotalLearnedLessons();
@@ -34,7 +37,8 @@ class _CategoryViewState extends State<CategoryView> {
         var cubit = UserCubit.get(context);
         return CustomProgressHud(
           isLoading: state is UserGetCategoriesLoadingState ||
-              state is GetUserLevelLoadingState,
+              state is GetUserLevelLoadingState ||
+              state is GetUserLoadingState,
           child: Scaffold(
             appBar: buildHomeAppBar(
               context,

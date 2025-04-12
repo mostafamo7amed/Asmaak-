@@ -277,6 +277,7 @@ class AdminCubit extends Cubit<AdminState> {
           .update(lessonEntity.toMap())
           .then((value) {
         pikedImage = null;
+        pikedVideo = null;
         emit(EditLessonSuccessState());
       }).catchError((error) {
         pikedImage = null;

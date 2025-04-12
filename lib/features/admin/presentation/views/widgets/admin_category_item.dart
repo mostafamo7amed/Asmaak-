@@ -32,11 +32,11 @@ class AdminCategoryItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
-              width: 90,
-              height: 100,
+              width: 95,
+              height: 95,
               child: Image.network(
                 categoryEntity.image,
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
               ).cornerRadiusWithClipRRect(14)),
           SizedBox(
             width: 5,

@@ -96,9 +96,11 @@ class _UserCategoryItemState extends State<UserCategoryItem> {
               ),
               const Spacer(),
               SizedBox(
-                  width: 120,
+                  width: 100,
                   height: 100,
-                  child: Image.network(widget.category.image, fit: BoxFit.cover)
+                  child: Image.network(
+                      widget.category.image,
+                      fit: BoxFit.contain)
                       .cornerRadiusWithClipRRect(14)),
             ],
           ),

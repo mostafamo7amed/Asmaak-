@@ -80,7 +80,7 @@ class _MyPointsViewState extends State<MyPointsView> {
                             AssetsData.lez,
                           ),
                           Text(
-                            cubit.levelEntity?.level ?? 'مستوى مبدئي',
+                            cubit.levelEntity?.level ?? 'مستوى مبتدئ',
                             style: Styles.bold23
                                 .copyWith(color: AppColor.purpleColor),
                           ),

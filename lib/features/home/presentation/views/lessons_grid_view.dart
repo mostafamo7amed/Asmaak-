@@ -1,14 +1,11 @@
 import 'package:asmaak/core/services/app_references.dart';
-import 'package:asmaak/core/utils/app_manager/app_assets.dart';
 import 'package:asmaak/core/utils/extensions.dart';
 import 'package:asmaak/core/utils/widgets/custom_progress_hud.dart';
-import 'package:asmaak/features/home/domain/entity/category_progress.dart';
 import 'package:asmaak/features/home/presentation/manager/user_cubit.dart';
 import 'package:asmaak/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:asmaak/core/utils/widgets/custom_view_lesson_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import '../../../../core/helper_functions/isLessonLearned.dart';
 import '../../../../core/utils/app_manager/app_colors.dart';
 import '../../../../core/utils/app_manager/app_styles.dart';
@@ -56,8 +53,7 @@ class _LessonsGridViewState extends State<LessonsGridView> {
               context,
               title: 'الدروس',
               currentProgress: cubit.categoryProgress.isEmpty
-                  ? 1
-                  : cubit.categoryProgress.length,
+                  ? 0 : cubit.categoryProgress.length,
               totalProgress: cubit.lessons.isEmpty ? 50 : cubit.lessons.length,
             ),
             body: Padding(

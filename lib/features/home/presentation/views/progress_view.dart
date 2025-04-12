@@ -88,7 +88,7 @@ class ProgressView extends StatelessWidget {
                                     ),
                                     child: Row(
                                       children: [
-                                        Text('احتبار :',
+                                        Text('اختبار :',
                                             style: Styles.bold16.copyWith(
                                                 color: AppColor.whiteColor)),
                                         SizedBox(
@@ -114,7 +114,7 @@ class ProgressView extends StatelessWidget {
                 },
               );
             },
-            text: 'أبداء الاختبار',
+            text: 'ابدأ الاختبار',
           ),
           body: SafeArea(
             child: Container(
@@ -288,7 +288,7 @@ class ProgressView extends StatelessWidget {
                             left: 0,
                             right: MediaQuery.of(context).size.width * .06,
                             child: Text(
-                              cubit.levelEntity?.level ?? "مستوى مبدئي",
+                              cubit.levelEntity?.level ?? "مستوى مبتدئ",
                               textAlign: TextAlign.center,
                               style: Styles.bold16
                                   .copyWith(color: AppColor.whiteColor),
