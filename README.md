@@ -1,16 +1,23 @@
-# asmaak
+# Asmaak | أَسْمَعُك
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+Welcome to **Asmaak | أَسْمَعُك**, A mobile application designed to teach Arabic sign language to children. The application includes a variety of engaging features such as video lessons and quizzes, all designed to make learning fun and effective. This application serves as a culturally relevant tool that facilitates access to educational content for Arabic-speaking children.
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Features
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Main Feature**: Teaching Arabic sign language to children through engaging video lessons and interactive quizzes.
+- **Cross-Platform**: Works seamlessly on Android and IOS.
+
+---
+
+## Technologies Used
+
+This project leverages the following technologies:
+
+- **Framework**: [Flutter](https://flutter.dev/) for building cross-platform apps.
+- **Styling**: Custom widgets and themes for a consistent design.
+- **Deployment**: Can be deployed to Android, iOS, and the web using Flutter's tools.
